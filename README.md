@@ -1,6 +1,6 @@
 # 🇮🇳 Bharat USD (BUSD) - Official Repository
 
-![BUSD Logo](logo.png)
+![BUSD Logo](logo.PNG)
 
 **Bharat USD (BUSD)** is a premium, fixed-supply stablecoin built on the **Arbitrum One** Layer 2 network. Designed for the Indian and Global cryptocurrency community, BUSD focuses on stability, security, and low-cost transactions.
 
