@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat USD (BUSD) - Official Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #D4AF37; --navy: #000814; --white: #ffffff; --green: #27ae60; --gray: #f4f4f4; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; scroll-behavior: smooth; }
+        
+        /* Utility Classes */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 50px 0; }
+        .section-title { font-size: 2.5rem; color: var(--gold); text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
+        .btn { display: inline-block; padding: 12px 30px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .btn-gold { background: var(--gold); color: var(--navy); }
+        .btn-gold:hover { transform: scale(1.05); }
+
+        /* Header */
+        header { background: rgba(0, 8, 20, 0.9); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(212,175,55,0.2); }
+        .nav { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-size: 1.5rem; font-weight: 700; color: var(--gold); }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.9rem; }
+
+        /* Hero Section */
+        #home { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: 100px; }
+        #home::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('logo.PNG') no-repeat center center; background-size: contain; opacity: 0.05; z-index: -1; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; }
+        .hero-content p { font-size: 1.2rem; opacity: 0.8; margin: 20px 0 30px; }
+        .hero-logo { width: 150px; margin-bottom: 30px; animation: pulse 2s infinite; }
+
+        /* About Section */
+        #about { background: rgba(255,255,255,0.03); border-radius: 20px; padding: 50px; margin-bottom: 50px; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+        
+        /* Tokenomics Section */
+        .tokenomics-info { text-align: center; margin-bottom: 30px; font-size: 1.1rem; }
+        .pie-chart { width: 300px; height: 300px; border-radius: 50%; background: conic-gradient(var(--gold) 40%, var(--green) 30%, #e67e22 20%, #3498db 10%); margin: 0 auto 30px; border: 5px solid rgba(255,255,255,0.1); }
+        .legend { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; list-style: none; font-size: 0.9rem; }
+        .legend-item::before { content: ''; display: inline-block; width: 12px; height: 12px; margin-right: 8px; border-radius: 2px; }
+        .item-otc::before { background: var(--gold); }
+        .item-liq::before { background: var(--green); }
+        .item-marketing::before { background: #e67e22; }
+        .item-burn::before { background: #3498db; }
+
+        /* Price Increase Strategy */
+        .strategy-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.2); border-radius: 15px; padding: 25px; margin-bottom: 20px; }
+        .strategy-card h3 { color: var(--gold); margin-bottom: 10px; }
+
+        /* Roadmap Section */
+        .roadmap-timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 30px; }
+        .roadmap-timeline::before { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: var(--gold); }
+        .roadmap-item { margin-bottom: 40px; position: relative; }
+        .roadmap-item::before { content: ''; position: absolute; left: -36px; top: 5px; width: 15px; height: 15px; background: var(--gold); border-radius: 50%; border: 3px solid var(--navy); }
+        .roadmap-date { font-weight: 700; color: var(--gold); font-size: 1.1rem; margin-bottom: 5px; }
+        .roadmap-content { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; }
+
+        /* Whitepaper */
+        #whitepaper { text-align: center; border: 2px dashed rgba(212,175,55,0.3); border-radius: 20px; padding: 50px; margin-bottom: 50px; }
+
+        /* Exchanges */
+        .exchange-logos { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; opacity: 0.7; }
+        .exchange-logos span { font-size: 1.2rem; font-weight: 600; color: var(--gray); border: 1px solid rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 5px; }
+
+        /* Footer */
+        footer { background: #000408; padding: 30px 0; text-align: center; border-top: 1px solid rgba(212,175,55,0.2); }
+        
+        /* Animations */
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .pie-chart { width: 200px; height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav">
+            <div class="nav-logo">BUSD</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#whitepaper">Whitepaper</a></li>
+            </ul>
+            <a href="otc.html" class="btn btn-gold" style="font-size: 0.8rem;">Buy BUSD</a>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container hero-content">
+            <img src="logo.PNG" alt="Bharat USD Logo" class="hero-logo">
+            <h1>BHARAT USD <span style="color: var(--gold);">(BUSD)</span></h1>
+            <p>The Future of Digital Currency in India.</p>
+            <p style="font-size: 1.4rem; color: var(--green); font-weight: bold;">LIVE RATE: ₹0.90 INR</p>
+            <a href="otc.html" class="btn btn-gold">Instant Buy with UPI</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Why Bharat USD?</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p style="margin-bottom: 15px; opacity: 0.8;">BUSD represents India's official leap into the secure world of blockchain technology. Built on the lightning-fast Arbitrum Network, BUSD combines stability with high-speed, low-cost transactions.</p>
+                    <p style="opacity: 0.8;">Our vision is to make BUSD a daily utility, from mobile recharges to bill payments, driving real-world adoption and value.</p>
+                </div>
+                <img src="logo.PNG" alt="BUSD Concept" style="width: 100%; max-width: 300px; margin: 0 auto; opacity: 0.5;">
+            </div>
+        </div>
+    </section>
+
+    <section id="tokenomics">
+        <div class="container">
+            <h2 class="section-title">Tokenomics</h2>
+            <div class="tokenomics-info">
+                <p><strong>Total Supply:</strong> 1,00,00,000 BUSD</p>
+                <p>Network: Arbitrum (ERC-20)</p>
+            </div>
+            <div class="pie-chart"></div>
+            <ul class="legend">
+                <li class="legend-item item-otc">Public Sale (OTC) - 40%</li>
+                <li class="legend-item item-liq">Locked Liquidity - 30%</li>
+                <li class="legend-item item-marketing">Marketing & Dev - 20%</li>
+                <li class="legend-item item-burn">Transactional Burn - 10%</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="strategy">
+        <div class="container">
+            <h2 class="section-title">Price Strategy</h2>
+            <p style="text-align: center; margin-bottom: 30px; opacity: 0.8;">How BUSD will increase in value from ₹0.90 to ₹80.00+</p>
+            
+            <div class="strategy-card">
+                <h3>🔥 Transctional Burn Mechanism</h3>
+                <p style="font-size: 0.9rem; opacity: 0.8;">Each time BUSD is transferred, 2% of the transaction amount is permanently BURNED, reducing the total supply and increasing individual token value.</p>
+            </div>
+            <div class="strategy-card">
+                <h3>🛍️ Real-World Utility Adoption</h3>
+                <p style="font-size: 0.9rem; opacity: 0.8;">As we integrate BUSD for mobile recharges and bill payments, demand will surge, driving the market rate higher through true utility.</p>
+            </div>
+            <div class="strategy-card">
+                <h3>🔒 Locked Liquidity</h3>
+                <p style="font-size: 0.9rem; opacity: 0.8;">30% of the total supply is locked in the Liquidity Pool (LP) to ensure price stability and investor security, preventing any massive "dump".</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap">
+        <div class="container">
+            <h2 class="section-title">Roadmap 2026</h2>
+            <div class="roadmap-timeline">
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Phase 1: OTC Launch</div>
+                    <div class="roadmap-content">Official OTC Desk Launch, Community Building, Social Media Presence.</div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Phase 2: DEX Listing</div>
+                    <div class="roadmap-content">Arbitrum DEX Listing (Uniswap), LP Locking, First Token Burn Event.</div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Phase 3: Ecosystem Expansion</div>
+                    <div class="roadmap-content">CoinMarketCap & CoinGecko Listing, Partnership Announcements.</div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Phase 4: Real Utility</div>
+                    <div class="roadmap-content">Integration of BUSD for Bill Payments & Mobile Recharge services.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="whitepaper">
+        <div class="container">
+            <h2 class="section-title">Whitepaper</h2>
+            <p style="margin-bottom: 30px; opacity: 0.8;">Download our technical whitepaper to understand the BUSD ecosystem, security protocols, and future growth strategies.</p>
+            <a href="#" class="btn btn-gold">Download Whitepaper (PDF)</a>
+        </div>
+    </section>
+
+    <section id="exchanges">
+        <div class="container">
+            <h2 class="section-title">Exchanges</h2>
+            <p style="text-align: center; margin-bottom: 30px; opacity: 0.6;">Upcoming CEX/DEX Listings</p>
+            <div class="exchange-logos">
+                <span>Uniswap (DEX)</span>
+                <span>Sushiswap</span>
+                <span>CoinGecko (Soon)</span>
+                <span>CoinMarketCap (Soon)</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Bharat USD (BUSD). All Rights Reserved.</p>
+            <p style="font-size: 0.9rem; color: var(--gray);">Connect with us: <a href="https://t.me/bharatusd" style="color: var(--gold); text-decoration: none;">@bharatusd</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
