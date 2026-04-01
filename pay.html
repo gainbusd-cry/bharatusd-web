@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay & Buy BUSD - Official Payment Gateway</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --emerald: #00ff88; --deep-green: #0a1f1a; --white: #ffffff; --gold: #FFD700; }
+        body { font-family: 'Poppins', sans-serif; background: var(--deep-green); color: var(--white); text-align: center; padding: 40px 20px; }
+        
+        .pay-card { background: var(--white); color: #333; max-width: 400px; margin: 0 auto; border-radius: 25px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); border: 5px solid var(--emerald); }
+        .token-logo { width: 80px; height: 80px; margin-bottom: 10px; border-radius: 50%; border: 2px solid var(--emerald); background: white; padding: 5px; }
+        
+        .qr-box { background: #f9f9f9; padding: 20px; border-radius: 15px; margin: 20px 0; border: 2px dashed #ccc; }
+        .qr-img { width: 220px; height: 220px; margin: 0 auto; display: block; }
+        
+        .upi-id { font-weight: 700; color: #000; background: #e8f5e9; padding: 10px; border-radius: 8px; font-size: 1rem; margin-bottom: 20px; border: 1px solid #81c784; word-break: break-all; }
+        
+        .step-box { text-align: left; background: rgba(0, 255, 136, 0.1); padding: 15px; border-radius: 12px; margin: 20px auto; max-width: 400px; }
+        .step-box h3 { font-size: 0.9rem; color: var(--emerald); margin-bottom: 10px; }
+        .step-box p { font-size: 0.8rem; margin-bottom: 5px; opacity: 0.9; color: white; }
+
+        .btn-confirm { display: block; max-width: 400px; margin: 25px auto 0; background: var(--emerald); color: var(--deep-green); padding: 15px; border-radius: 10px; text-decoration: none; font-weight: 800; box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3); }
+        
+        .nav-back { display: inline-block; margin-top: 20px; color: var(--emerald); text-decoration: none; font-size: 0.8rem; opacity: 0.7; }
+    </style>
+</head>
+<body>
+
+    <img src="logo.PNG" alt="BUSD" class="token-logo">
+    <h2 style="color: var(--emerald); margin-bottom: 5px;">BHARAT USD (BUSD)</h2>
+    <p style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 30px;">Official Payment Desk - Verified by Admin</p>
+
+    <div class="pay-card">
+        <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Scan to Pay via UPI</h3>
+        
+        <div class="qr-box">
+            <img src="qr.png" alt="Scan QR to Pay" class="qr-img" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=9730698063@paytm%26pn=Mangesh%20Shinde%26cu=INR';">
+            <p style="font-size: 0.6rem; color: #666; margin-top: 10px;">GPay | PhonePe | Paytm | BHIM</p>
+        </div>
+
+        <div class="upi-id">9730698063@paytm</div>
+        
+        <p style="font-size: 0.75rem; color: #555;">Rate: <b>1 BUSD = ₹0.90</b></p>
+    </div>
+
+    <div class="step-box">
+        <h3>📝 Next Steps:</h3>
+        <p>1. Take a screenshot of the payment receipt.</p>
+        <p>2. Click below to send receipt on WhatsApp.</p>
+        <p>3. Tokens will be sent to your wallet in 5-15 Mins.</p>
+    </div>
+
+    <a href="https://wa.me/919730698063?text=Hi, I have paid for BUSD. Here is my receipt screenshot. Please send tokens to my wallet." class="btn-confirm">SUBMIT RECEIPT (WHATSAPP)</a>
+    
+    <br>
+    <a href="index.html" class="nav-back">← Back to Main Page</a>
+
+</body>
+</html>
