@@ -1,42 +1,52 @@
 # 🇮🇳 Bharat USD (BUSD) - Official Repository
 
-![BUSD Logo](logo.PNG)
+![BUSD Banner](https://img.shields.io/badge/Blockchain-Arbitrum-blue?style=for-the-badge&logo=ethereum)
+![BUSD Status](https://img.shields.io/badge/Status-Live-green?style=for-the-badge)
 
-**Bharat USD (BUSD)** is a premium, fixed-supply stablecoin built on the **Arbitrum One** Layer 2 network. Designed for the Indian and Global cryptocurrency community, BUSD focuses on stability, security, and low-cost transactions.
-
-## 🚀 Key Features
-- **Fixed Supply:** 1,000,000,000 (100 Crores) BUSD tokens. No more can ever be minted.
-- **Audit-Ready:** Built using industry-standard OpenZeppelin smart contract libraries.
-- **Arbitrum Native:** Extremely low gas fees and lightning-fast transaction speeds.
-- **Governance:** Community-led decision-making for ecosystem growth.
-
-## 📊 Token Details
-- **Token Name:** Bharat USD
-- **Symbol:** BUSD
-- **Decimals:** 18
-- **Network:** Arbitrum One (L2)
-- **Contract Address:** `0x25d34817D4205fE605b4C65Ed3Be83C85107d333`
-
-## 🛤️ Roadmap
-### Phase 1: Genesis (Q1 2026)
-- [x] Smart Contract Deployment on Arbitrum.
-- [x] Arbiscan Verification.
-- [x] Official Branding & Logo Design.
-
-### Phase 2: Growth (Q2 2026)
-- [ ] Liquidity Addition on Uniswap V3.
-- [ ] Community Building (Telegram & Twitter).
-- [ ] Logo Update on Scanners & Wallets.
-
-### Phase 3: Utility (Q3 2026)
-- [ ] Staking & Rewards Launch.
-- [ ] CEX Listing Negotiations.
-- [ ] Strategic Ecosystem Partnerships.
-
-## 🔗 Official Links
-- **Website:** [https://YOUR-USERNAME.github.io/bharatusd-web/](https://YOUR-USERNAME.github.io/bharatusd-web/)
-- **Arbiscan:** [View on Arbiscan](https://arbiscan.io/token/0x25d34817D4205fE605b4C65Ed3Be83C85107d333)
-- **Telegram:** [Join our Community](https://t.me/BharatUSD_Official)
+**Bharat USD (BUSD)** is a next-generation digital asset built on the **Arbitrum Network**. It is designed to bring stability, high speed, and low-cost transactions to the Indian digital economy.
 
 ---
-*Disclaimer: Bharat USD is a decentralized project. Always verify the contract address before making any transactions.*
+
+## 🌐 Official Links
+* **Official Website:** [https://gainbusd-cry.github.io/bharatusd-web/](https://gainbusd-cry.github.io/bharatusd-web/)
+* **OTC Buying Desk:** [Click Here to Buy with INR](https://gainbusd-cry.github.io/bharatusd-web/otc.html)
+* **Telegram Community:** [@bharatusd](https://t.me/bharatusd)
+
+---
+
+## 📊 Tokenomics
+* **Token Name:** Bharat USD
+* **Symbol:** BUSD
+* **Total Supply:** 10,000,000 BUSD
+* **Network:** Arbitrum (ERC-20)
+* **Transaction Burn:** 2% (Supply reduces with every transfer)
+
+---
+
+## 🚀 Vision & Roadmap
+BUSD is not just a token; it's a utility. Our goal is to reach a stable value of **₹80.00+** through:
+1. **Scarcity:** Constant burning of tokens.
+2. **Utility:** Integration with Mobile Recharge & Utility Bill Payment systems.
+3. **Liquidity:** Strong backing on Decentralized Exchanges (DEX).
+
+---
+
+## 🛡️ Security & Transparency
+* **Open Source:** This repository contains the official frontend and logic for the BUSD platform.
+* **Verified Contract:** Deploying soon on Arbitrum Mainnet.
+* **Locked Liquidity:** 30% of supply is reserved for LP locking.
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** HTML5, CSS3 (Flexbox/Grid), JavaScript.
+- **Smart Contract:** Solidity (Arbitrum/Ethereum).
+- **Communication:** WhatsApp & Telegram API Integrations.
+
+---
+
+## ⚠️ Disclaimer
+Crypto assets are subject to market risks. Please do your own research (DYOR) before investing. This project is for community development and utility purposes.
+
+---
+**Maintained by:** [BUSD Official Team](https://github.com/gainbusd-cry)
