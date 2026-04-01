@@ -6,12 +6,11 @@
     <title>Bharat USD (BUSD) - Official Platform</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* NEW DIGITAL GREEN THEME */
         :root { 
-            --deep-green: #0a1f1a; /* Background */
-            --emerald: #00ff88;    /* Primary Green */
-            --soft-green: #14362d; /* Section background */
-            --gold: #FFD700;       /* Highlights */
+            --deep-green: #0a1f1a; 
+            --emerald: #00ff88;    
+            --soft-green: #14362d; 
+            --gold: #FFD700;       
             --white: #ffffff; 
         }
         
@@ -21,47 +20,33 @@
         .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 60px 0; }
         .section-title { font-size: 2.2rem; color: var(--emerald); text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
         
-        /* Professional Buttons */
-        .btn { display: inline-block; padding: 14px 35px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: 0.4s; text-align: center; cursor: pointer; }
+        .btn { display: inline-block; padding: 14px 30px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: 0.4s; text-align: center; cursor: pointer; border: none; }
         .btn-emerald { background: var(--emerald); color: var(--deep-green); box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3); }
-        .btn-emerald:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 255, 136, 0.5); }
+        .btn-outline { border: 1px solid var(--emerald); color: var(--emerald); background: transparent; margin-left: 10px; }
+        .btn:hover { transform: translateY(-3px); opacity: 0.9; }
 
-        /* Header */
         header { background: rgba(10, 31, 26, 0.95); padding: 20px 0; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 255, 136, 0.1); }
         .nav { display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { font-size: 1.6rem; font-weight: 800; color: var(--emerald); letter-spacing: 1px; }
 
-        /* Hero Section */
         #home { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 80px; background: radial-gradient(circle at center, #14362d 0%, #0a1f1a 100%); }
-        .hero-logo { width: 180px; margin-bottom: 25px; filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.2)); animation: float 3s ease-in-out infinite; }
+        .hero-logo { width: 180px; margin-bottom: 25px; animation: float 3s ease-in-out infinite; }
         .hero-content h1 { font-size: 3rem; font-weight: 800; color: var(--white); line-height: 1.1; }
         .live-rate-tag { background: rgba(0, 255, 136, 0.1); border: 1px solid var(--emerald); color: var(--emerald); display: inline-block; padding: 8px 20px; border-radius: 50px; margin: 20px 0; font-weight: 600; font-size: 1.1rem; }
 
-        /* Strategy Cards */
         .strategy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .strategy-card { background: var(--soft-green); border: 1px solid rgba(0, 255, 136, 0.1); padding: 30px; border-radius: 15px; transition: 0.3s; }
-        .strategy-card:hover { border-color: var(--emerald); background: #1a4237; }
-        .strategy-card h3 { color: var(--emerald); margin-bottom: 15px; font-size: 1.3rem; }
+        .strategy-card { background: var(--soft-green); border: 1px solid rgba(0, 255, 136, 0.1); padding: 30px; border-radius: 15px; }
+        .strategy-card h3 { color: var(--emerald); margin-bottom: 15px; }
 
-        /* Tokenomics Chart */
         .chart-box { text-align: center; padding: 40px; background: rgba(0,0,0,0.2); border-radius: 20px; }
-        .pie-chart { width: 280px; height: 280px; border-radius: 50%; background: conic-gradient(var(--emerald) 40%, #00c46a 30%, #008f4c 20%, #005c31 10%); margin: 0 auto 30px; box-shadow: 0 0 30px rgba(0,255,136,0.1); }
+        .pie-chart { width: 250px; height: 250px; border-radius: 50%; background: conic-gradient(var(--emerald) 40%, #00c46a 30%, #008f4c 20%, #005c31 10%); margin: 0 auto 30px; }
 
-        /* Roadmap Timeline */
-        .roadmap-timeline { border-left: 3px solid var(--emerald); margin-left: 20px; padding-left: 30px; position: relative; }
-        .roadmap-item { margin-bottom: 50px; position: relative; }
-        .roadmap-item::before { content: ''; position: absolute; left: -39px; top: 5px; width: 16px; height: 16px; background: var(--emerald); border-radius: 50%; box-shadow: 0 0 10px var(--emerald); }
-        .roadmap-item h4 { color: var(--emerald); font-size: 1.2rem; margin-bottom: 10px; }
-
-        /* Animations */
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-        /* Footer */
-        footer { padding: 40px 0; border-top: 1px solid rgba(0, 255, 136, 0.1); text-align: center; opacity: 0.8; }
+        footer { padding: 40px 0; border-top: 1px solid rgba(0, 255, 136, 0.1); text-align: center; }
 
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.2rem; }
-            .section-title { font-size: 1.6rem; }
+            .btn { width: 80%; margin: 10px auto !important; display: block; }
         }
     </style>
 </head>
@@ -69,18 +54,23 @@
 
     <header>
         <div class="container nav">
-            <div class="nav-logo">BHARAT USD</div>
-            <a href="otc.html" class="btn btn-emerald" style="padding: 10px 20px; font-size: 0.8rem;">BUY BUSD</a>
+            <div class="nav-logo">BUSD</div>
+            <div class="nav-btns">
+                <a href="otc.html" class="btn btn-emerald" style="padding: 10px 15px; font-size: 0.7rem;">BUY</a>
+                <a href="p2p.html" class="btn btn-outline" style="padding: 10px 15px; font-size: 0.7rem;">P2P MARKET</a>
+            </div>
         </div>
     </header>
 
     <section id="home">
         <div class="container hero-content">
             <img src="logo.PNG" alt="BUSD Logo" class="hero-logo">
-            <h1>SMART STABLE CURRENCY <br><span style="color: var(--emerald);">FOR BHARAT</span></h1>
-            <div class="live-rate-tag">LIVE PRICE: ₹0.90 INR</div>
-            <br>
-            <a href="otc.html" class="btn btn-emerald">START INVESTING NOW</a>
+            <h1>BHARAT USD <br><span style="color: var(--emerald);">DIGITAL ASSET</span></h1>
+            <div class="live-rate-tag">1 BUSD = ₹0.90 INR</div>
+            <div style="margin-top: 20px;">
+                <a href="otc.html" class="btn btn-emerald">START INVESTING</a>
+                <a href="p2p.html" class="btn btn-outline">P2P MARKETPLACE</a>
+            </div>
         </div>
     </section>
 
@@ -89,62 +79,33 @@
             <h2 class="section-title">Tokenomics</h2>
             <div class="chart-box">
                 <div class="pie-chart"></div>
-                <p style="margin-bottom: 20px; font-weight: 600;">Total Supply: 1,00,00,000 BUSD</p>
-                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 0.85rem;">
-                    <span>🟢 Public Sale: 40%</span>
-                    <span>🟢 Liquidity: 30%</span>
-                    <span>🟢 Marketing: 20%</span>
-                    <span>🟢 Burn: 10%</span>
-                </div>
+                <p>Supply: 1,00,00,000 BUSD | Network: Arbitrum</p>
             </div>
         </div>
     </section>
 
     <section id="strategy">
         <div class="container">
-            <h2 class="section-title">Road to ₹80.00</h2>
+            <h2 class="section-title">Why Trust BUSD?</h2>
             <div class="strategy-grid">
                 <div class="strategy-card">
-                    <h3>🔥 Auto-Burn</h3>
-                    <p>Every transaction reduces the supply. Scarcity drives the price higher automatically.</p>
+                    <h3>🔥 Token Burn</h3>
+                    <p>Supply reduces with every trade to increase value.</p>
                 </div>
                 <div class="strategy-card">
-                    <h3>📱 Utility First</h3>
-                    <p>Pay mobile bills and recharges using BUSD. Real usage means real value.</p>
+                    <h3>🛡️ Escrow Protection</h3>
+                    <p>P2P trades are secured by our official team.</p>
                 </div>
                 <div class="strategy-card">
-                    <h3>💎 Safe Reserve</h3>
-                    <p>Backed by locked liquidity to ensure your investment is always secure.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="roadmap">
-        <div class="container">
-            <h2 class="section-title">Project Roadmap</h2>
-            <div class="roadmap-timeline">
-                <div class="roadmap-item">
-                    <h4>Phase 1: OTC Deployment</h4>
-                    <p>Launch of the direct-buy platform at ₹0.90. Community growth and awareness.</p>
-                </div>
-                <div class="roadmap-item">
-                    <h4>Phase 2: DEX & Listings</h4>
-                    <p>Listing on Uniswap (Arbitrum). Setting up the Liquidity Pool and price tracking.</p>
-                </div>
-                <div class="roadmap-item">
-                    <h4>Phase 3: Utility Integration</h4>
-                    <p>Launch of BUSD-based recharge portal. Partnerships with utility providers.</p>
+                    <h3>📱 Future Utility</h3>
+                    <p>Use BUSD for mobile recharges and daily bills.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 BUSD Official Team. Powered by Arbitrum Blockchain.</p>
-            <p style="margin-top: 10px;">Telegram: <a href="https://t.me/bharatusd" style="color: var(--emerald); text-decoration: none;">@bharatusd</a></p>
-        </div>
+        <p>&copy; 2026 BUSD Official Team | Telegram: @bharatusd</p>
     </footer>
 
 </body>
