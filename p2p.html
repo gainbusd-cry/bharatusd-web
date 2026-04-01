@@ -3,56 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUSD P2P Marketplace</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>BUSD P2P Marketplace - Buy & Sell</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --emerald: #00ff88; --deep-green: #0a1f1a; --white: #ffffff; }
-        body { font-family: 'Poppins', sans-serif; background: var(--deep-green); color: var(--white); text-align: center; padding: 20px; }
-        .p2p-container { max-width: 600px; margin: auto; }
-        .ad-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(0, 255, 136, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
-        .ad-card:hover { border-color: var(--emerald); background: rgba(0, 255, 136, 0.05); }
-        .seller-info { text-align: left; }
-        .price { color: var(--emerald); font-weight: bold; font-size: 1.2rem; }
-        .limit { font-size: 0.8rem; opacity: 0.7; }
-        .btn-buy { background: var(--emerald); color: var(--deep-green); border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; text-decoration: none; }
-        .badge { background: #f39c12; color: black; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; vertical-align: middle; }
+        :root { --emerald: #00ff88; --deep-green: #0a1f1a; --soft-green: #14362d; --white: #ffffff; --gold: #FFD700; --red: #ff4d4d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--deep-green); color: var(--white); padding: 20px; }
+        
+        .header { text-align: center; margin-bottom: 30px; padding-top: 20px; }
+        .header h1 { color: var(--emerald); font-size: 1.8rem; text-transform: uppercase; }
+        .header p { opacity: 0.7; font-size: 0.8rem; margin-top: 5px; }
+
+        .container { max-width: 600px; margin: auto; }
+        
+        .section-label { font-size: 0.9rem; font-weight: 600; color: var(--gold); margin: 25px 0 15px; text-align: left; border-left: 4px solid var(--gold); padding-left: 10px; }
+
+        /* Card Styling */
+        .ad-card { background: var(--soft-green); border: 1px solid rgba(0, 255, 136, 0.1); border-radius: 12px; padding: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .ad-card:hover { border-color: var(--emerald); }
+        .user-info { text-align: left; }
+        .name { font-weight: 700; font-size: 1rem; }
+        .badge { background: var(--emerald); color: var(--deep-green); font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; font-weight: 800; margin-left: 4px; }
+        .limit { font-size: 0.7rem; opacity: 0.6; margin-top: 2px; }
+        
+        .price-box { text-align: right; }
+        .price { font-size: 1.3rem; color: var(--emerald); font-weight: 800; line-height: 1; }
+        .price.sell-price { color: var(--red); }
+
+        /* Buttons */
+        .action-btn { display: inline-block; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.85rem; margin-top: 8px; transition: 0.3s; border: none; cursor: pointer; }
+        .buy-btn { background: var(--emerald); color: var(--deep-green); }
+        .sell-btn { background: var(--red); color: white; }
+
+        /* Sell Form Modal Style */
+        .sell-form-container { background: rgba(0,0,0,0.3); border: 1px dashed var(--gold); border-radius: 15px; padding: 20px; margin-top: 40px; text-align: left; }
+        .sell-form-container h3 { color: var(--gold); font-size: 1rem; margin-bottom: 15px; }
+        input { width: 100%; padding: 10px; margin-bottom: 12px; background: #0a1f1a; border: 1px solid #1a4237; border-radius: 6px; color: white; outline: none; }
+        .submit-btn { width: 100%; background: var(--gold); color: black; padding: 12px; border-radius: 6px; font-weight: 800; border: none; cursor: pointer; }
+
+        .nav-back { display: block; margin-top: 30px; color: var(--emerald); text-decoration: none; font-size: 0.8rem; text-align: center; }
     </style>
 </head>
 <body>
 
-    <h1 style="color: var(--emerald);">BUSD P2P Marketplace</h1>
-    <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 30px;">Buy/Sell Bharat USD directly with other users.</p>
-
-    <div class="p2p-container">
-        <div class="ad-card">
-            <div class="seller-info">
-                <div><b>Mangesh J.</b> <span class="badge">Verified</span></div>
-                <div class="limit">Limit: 100 - 5000 BUSD</div>
-                <div style="font-size: 0.7rem; color: #2ecc71;">✅ 100% Completion</div>
-            </div>
-            <div style="text-align: right;">
-                <div class="price">₹0.90 <small>INR</small></div>
-                <a href="https://wa.me/919730698063?text=Hi, I want to buy BUSD from your P2P Ad" class="btn-buy">Buy BUSD</a>
-            </div>
-        </div>
-
-        <div class="ad-card">
-            <div class="seller-info">
-                <div><b>Kiran K.</b></div>
-                <div class="limit">Limit: 50 - 1000 BUSD</div>
-                <div style="font-size: 0.7rem; color: #f1c40f;">🕒 Avg. Release: 15m</div>
-            </div>
-            <div style="text-align: right;">
-                <div class="price">₹0.92 <small>INR</small></div>
-                <button class="btn-buy" onclick="alert('Seller is currently offline')">Buy BUSD</button>
-            </div>
-        </div>
-
-        <div style="margin-top: 40px;">
-            <p style="font-size: 0.8rem;">Want to sell your BUSD?</p>
-            <a href="https://t.me/bharatusd" style="color: var(--emerald); text-decoration: none; font-weight: bold;">+ Post your Ad here</a>
-        </div>
+    <div class="header">
+        <h1>BUSD P2P MARKET</h1>
+        <p>Direct Peer-to-Peer Trading with Escrow Protection</p>
     </div>
+
+    <div class="container">
+        
+        <div class="section-label">BUY BUSD (Get from Sellers)</div>
+        
+        <div class="ad-card">
+            <div class="user-info">
+                <div class="name">Mangesh J. <span class="badge">VERIFIED</span></div>
+                <div class="limit">Limit: 500 - 5000 BUSD</div>
+                <div style="font-size: 0.65rem; color: #2ecc71;">✅ 100% Completion Rate</div>
+            </div>
+            <div class="price-box">
+                <div class="price">₹0.92</div>
+                <a href="https://wa.me/919730698063?text=Hi, I want to BUY BUSD." class="action-btn buy-btn">BUY Now</a>
+            </div>
+        </div>
+
+        <div class="section-label">SELL BUSD (Give to Buyers)</div>
+        
+        <div class="ad-card">
+            <div class="user-info">
+                <div class="name">Crypto_King <span class="badge" style="background:#3498db; color:white;">VIP</span></div>
+                <div class="limit">Buying Limit: 1000 - 20,000 BUSD</div>
+                <div style="font-size: 0.65rem; color: #f1c40f;">🕒 Instant Payment (UPI)</div>
+            </div>
+            <div class="price-box">
+                <div class="price sell-price">₹0.88</div>
+                <a href="https://wa.me/919730698063?text=Hi, I want to SELL my BUSD to Crypto_King." class="action-btn sell-btn">SELL Now</a>
+            </div>
+        </div>
+
+        <div class="sell-form-container">
+            <h3>📢 Want to Post your Own Ad?</h3>
+            <p style="font-size: 0.7rem; opacity: 0.6; margin-bottom: 15px;">Send your price and amount to Admin for listing.</p>
+            
+            <input type="number" id="userAmt" placeholder="Amount (e.g. 1500 BUSD)">
+            <input type="number" step="0.01" id="userPrice" placeholder="Your Price (e.g. 0.94 INR)">
+            <input type="text" id="userContact" placeholder="Your WhatsApp/Telegram ID">
+            
+            <button class="submit-btn" onclick="requestAd()">Request Ad Listing</button>
+        </div>
+
+        <a href="index.html" class="nav-back">← Back to Main Website</a>
+    </div>
+
+    <script>
+        function requestAd() {
+            let amt = document.getElementById('userAmt').value;
+            let price = document.getElementById('userPrice').value;
+            let contact = document.getElementById('userContact').value;
+
+            if(!amt || !price || !contact) {
+                alert("Bhai, saari details bhariye!");
+                return;
+            }
+
+            let message = `🚀 *NEW P2P AD REQUEST*%0A%0A*Action:* I want to post an Ad%0A*Amount:* ${amt} BUSD%0A*Price:* ₹${price}%0A*My Contact:* ${contact}%0A%0A_Admin, please check and list my ad._`;
+            
+            // Your WhatsApp Number
+            window.open(`https://wa.me/919730698063?text=${message}`, '_blank');
+        }
+    </script>
 
 </body>
 </html>
