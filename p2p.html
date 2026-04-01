@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUSD P2P Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --emerald: #00ff88; --deep-green: #0a1f1a; --white: #ffffff; }
+        body { font-family: 'Poppins', sans-serif; background: var(--deep-green); color: var(--white); text-align: center; padding: 20px; }
+        .p2p-container { max-width: 600px; margin: auto; }
+        .ad-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(0, 255, 136, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
+        .ad-card:hover { border-color: var(--emerald); background: rgba(0, 255, 136, 0.05); }
+        .seller-info { text-align: left; }
+        .price { color: var(--emerald); font-weight: bold; font-size: 1.2rem; }
+        .limit { font-size: 0.8rem; opacity: 0.7; }
+        .btn-buy { background: var(--emerald); color: var(--deep-green); border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; text-decoration: none; }
+        .badge { background: #f39c12; color: black; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; vertical-align: middle; }
+    </style>
+</head>
+<body>
+
+    <h1 style="color: var(--emerald);">BUSD P2P Marketplace</h1>
+    <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 30px;">Buy/Sell Bharat USD directly with other users.</p>
+
+    <div class="p2p-container">
+        <div class="ad-card">
+            <div class="seller-info">
+                <div><b>Mangesh J.</b> <span class="badge">Verified</span></div>
+                <div class="limit">Limit: 100 - 5000 BUSD</div>
+                <div style="font-size: 0.7rem; color: #2ecc71;">✅ 100% Completion</div>
+            </div>
+            <div style="text-align: right;">
+                <div class="price">₹0.90 <small>INR</small></div>
+                <a href="https://wa.me/919730698063?text=Hi, I want to buy BUSD from your P2P Ad" class="btn-buy">Buy BUSD</a>
+            </div>
+        </div>
+
+        <div class="ad-card">
+            <div class="seller-info">
+                <div><b>Kiran K.</b></div>
+                <div class="limit">Limit: 50 - 1000 BUSD</div>
+                <div style="font-size: 0.7rem; color: #f1c40f;">🕒 Avg. Release: 15m</div>
+            </div>
+            <div style="text-align: right;">
+                <div class="price">₹0.92 <small>INR</small></div>
+                <button class="btn-buy" onclick="alert('Seller is currently offline')">Buy BUSD</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <p style="font-size: 0.8rem;">Want to sell your BUSD?</p>
+            <a href="https://t.me/bharatusd" style="color: var(--emerald); text-decoration: none; font-weight: bold;">+ Post your Ad here</a>
+        </div>
+    </div>
+
+</body>
+</html>
