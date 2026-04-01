@@ -35,18 +35,17 @@
         .live-rate-tag { background: rgba(0, 255, 136, 0.1); border: 1px solid var(--emerald); color: var(--emerald); display: inline-block; padding: 8px 20px; border-radius: 50px; margin: 20px 0; font-weight: 600; font-size: 1.1rem; }
 
         .strategy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .strategy-card { background: var(--soft-green); border: 1px solid rgba(0, 255, 136, 0.1); padding: 30px; border-radius: 15px; }
+        .strategy-card { background: var(--soft-green); border: 1px solid rgba(0, 255, 136, 0.1); padding: 30px; border-radius: 15px; text-align: left; }
         .strategy-card h3 { color: var(--emerald); margin-bottom: 15px; }
 
-        .chart-box { text-align: center; padding: 40px; background: rgba(0,0,0,0.2); border-radius: 20px; }
-        .pie-chart { width: 250px; height: 250px; border-radius: 50%; background: conic-gradient(var(--emerald) 40%, #00c46a 30%, #008f4c 20%, #005c31 10%); margin: 0 auto 30px; }
+        #whitepaper-section { background: rgba(255,255,255,0.03); border-radius: 20px; padding: 60px 20px; text-align: center; margin: 40px 0; border: 1px dashed var(--emerald); }
 
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
         footer { padding: 40px 0; border-top: 1px solid rgba(0, 255, 136, 0.1); text-align: center; }
 
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.2rem; }
-            .btn { width: 80%; margin: 10px auto !important; display: block; }
+            .btn { width: 90%; margin: 10px auto !important; display: block; }
         }
     </style>
 </head>
@@ -57,7 +56,7 @@
             <div class="nav-logo">BUSD</div>
             <div class="nav-btns">
                 <a href="otc.html" class="btn btn-emerald" style="padding: 10px 15px; font-size: 0.7rem;">BUY</a>
-                <a href="p2p.html" class="btn btn-outline" style="padding: 10px 15px; font-size: 0.7rem;">P2P MARKET</a>
+                <a href="p2p.html" class="btn btn-outline" style="padding: 10px 15px; font-size: 0.7rem;">P2P</a>
             </div>
         </div>
     </header>
@@ -69,38 +68,36 @@
             <div class="live-rate-tag">1 BUSD = ₹0.90 INR</div>
             <div style="margin-top: 20px;">
                 <a href="otc.html" class="btn btn-emerald">START INVESTING</a>
-                <a href="p2p.html" class="btn btn-outline">P2P MARKETPLACE</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="tokenomics">
-        <div class="container">
-            <h2 class="section-title">Tokenomics</h2>
-            <div class="chart-box">
-                <div class="pie-chart"></div>
-                <p>Supply: 1,00,00,000 BUSD | Network: Arbitrum</p>
+                <a href="whitepaper.html" class="btn btn-outline" style="border-color: var(--gold); color: var(--gold);">WHITEPAPER</a>
             </div>
         </div>
     </section>
 
     <section id="strategy">
         <div class="container">
-            <h2 class="section-title">Why Trust BUSD?</h2>
+            <h2 class="section-title">BUSD Ecosystem</h2>
             <div class="strategy-grid">
                 <div class="strategy-card">
-                    <h3>🔥 Token Burn</h3>
-                    <p>Supply reduces with every trade to increase value.</p>
+                    <h3>🔥 Auto-Burn</h3>
+                    <p>Supply decreases with every transaction, making BUSD more valuable over time.</p>
                 </div>
                 <div class="strategy-card">
-                    <h3>🛡️ Escrow Protection</h3>
-                    <p>P2P trades are secured by our official team.</p>
+                    <h3>🛡️ Secure P2P</h3>
+                    <p>Trade directly with users under our official Escrow protection system.</p>
                 </div>
                 <div class="strategy-card">
-                    <h3>📱 Future Utility</h3>
-                    <p>Use BUSD for mobile recharges and daily bills.</p>
+                    <h3>📱 Real Utility</h3>
+                    <p>Future support for mobile recharges and bill payments across India.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="whitepaper-section">
+        <div class="container">
+            <h2 style="color: var(--gold); margin-bottom: 20px;">TECHNICAL WHITEPAPER</h2>
+            <p style="max-width: 700px; margin: 0 auto 30px; opacity: 0.8;">Read our detailed project documentation to understand Tokenomics, Roadmap, and Price Strategy (₹0.90 to ₹80.00+).</p>
+            <a href="whitepaper.html" class="btn btn-emerald">VIEW DIGITAL WHITEPAPER</a>
         </div>
     </section>
 
