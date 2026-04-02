@@ -3,113 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUSD P2P Marketplace - Buy & Sell</title>
+    <title>BUSD Secure P2P Escrow</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --emerald: #00ff88; --deep-green: #0a1f1a; --soft-green: #14362d; --white: #ffffff; --gold: #FFD700; --red: #ff4d4d; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: var(--deep-green); color: var(--white); padding: 20px; }
+        :root { --emerald: #00ff88; --deep-green: #0a1f1a; --soft-green: #14362d; --gold: #FFD700; --red: #ff4d4d; --white: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: var(--deep-green); color: var(--white); padding: 15px; }
+        .container { max-width: 500px; margin: 0 auto; }
         
-        .header { text-align: center; margin-bottom: 30px; padding-top: 20px; }
-        .header h1 { color: var(--emerald); font-size: 1.8rem; text-transform: uppercase; }
-        .header p { opacity: 0.7; font-size: 0.8rem; margin-top: 5px; }
+        /* Header */
+        header { text-align: center; margin-bottom: 25px; }
+        .badge { background: rgba(0, 255, 136, 0.1); color: var(--emerald); padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; border: 1px solid var(--emerald); display: inline-block; }
 
-        .container { max-width: 600px; margin: auto; }
+        /* P2P Ad Card */
+        .ad-card { background: var(--soft-green); border-radius: 20px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .seller-row { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+        .avatar { width: 45px; height: 45px; background: var(--emerald); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-weight: 800; }
         
-        .section-label { font-size: 0.9rem; font-weight: 600; color: var(--gold); margin: 25px 0 15px; text-align: left; border-left: 4px solid var(--gold); padding-left: 10px; }
-
-        /* Card Styling */
-        .ad-card { background: var(--soft-green); border: 1px solid rgba(0, 255, 136, 0.1); border-radius: 12px; padding: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
-        .ad-card:hover { border-color: var(--emerald); }
-        .user-info { text-align: left; }
-        .name { font-weight: 700; font-size: 1rem; }
-        .badge { background: var(--emerald); color: var(--deep-green); font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; font-weight: 800; margin-left: 4px; }
-        .limit { font-size: 0.7rem; opacity: 0.6; margin-top: 2px; }
+        .price-section { display: flex; justify-content: space-between; align-items: flex-end; margin: 15px 0; }
+        .price { font-size: 1.8rem; color: var(--emerald); font-weight: 700; line-height: 1; }
         
-        .price-box { text-align: right; }
-        .price { font-size: 1.3rem; color: var(--emerald); font-weight: 800; line-height: 1; }
-        .price.sell-price { color: var(--red); }
+        .pay-methods { display: flex; gap: 8px; margin-top: 10px; }
+        .method-tag { font-size: 0.65rem; background: rgba(255,215,0,0.1); color: var(--gold); padding: 4px 10px; border-radius: 6px; border: 1px solid var(--gold); }
 
-        /* Buttons */
-        .action-btn { display: inline-block; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.85rem; margin-top: 8px; transition: 0.3s; border: none; cursor: pointer; }
-        .buy-btn { background: var(--emerald); color: var(--deep-green); }
-        .sell-btn { background: var(--red); color: white; }
+        .btn-buy { display: block; width: 100%; background: var(--emerald); color: #0a1f1a; text-align: center; padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 800; border: none; cursor: pointer; font-size: 1rem; }
 
-        /* Sell Form Modal Style */
-        .sell-form-container { background: rgba(0,0,0,0.3); border: 1px dashed var(--gold); border-radius: 15px; padding: 20px; margin-top: 40px; text-align: left; }
-        .sell-form-container h3 { color: var(--gold); font-size: 1rem; margin-bottom: 15px; }
-        input { width: 100%; padding: 10px; margin-bottom: 12px; background: #0a1f1a; border: 1px solid #1a4237; border-radius: 6px; color: white; outline: none; }
-        .submit-btn { width: 100%; background: var(--gold); color: black; padding: 12px; border-radius: 6px; font-weight: 800; border: none; cursor: pointer; }
+        /* 💬 CHAT & ESCROW MODAL 💬 */
+        #chatModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; z-index: 2000; flex-direction: column; }
+        .chat-container { width: 100%; max-width: 500px; height: 100%; background: var(--soft-green); margin: 0 auto; display: flex; flex-direction: column; }
+        .chat-header { background: #1a4a3d; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,255,136,0.2); }
+        
+        .escrow-alert { background: rgba(255, 215, 0, 0.1); color: var(--gold); padding: 10px; font-size: 0.75rem; text-align: center; border-bottom: 1px solid var(--gold); }
 
-        .nav-back { display: block; margin-top: 30px; color: var(--emerald); text-decoration: none; font-size: 0.8rem; text-align: center; }
+        .chat-body { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+        .msg { max-width: 85%; padding: 12px 15px; border-radius: 15px; font-size: 0.85rem; line-height: 1.4; }
+        .msg-in { background: #0a1f1a; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .msg-out { background: var(--emerald); color: #000; align-self: flex-end; border-bottom-right-radius: 2px; }
+
+        /* Trade Action Buttons */
+        .trade-footer { background: #0a1f1a; padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .action-btns { display: flex; gap: 10px; margin-bottom: 10px; }
+        .btn-action { flex: 1; padding: 10px; border-radius: 8px; border: none; font-weight: 700; font-size: 0.75rem; cursor: pointer; }
+        .btn-paid { background: var(--gold); color: #000; }
+        .btn-release { background: var(--emerald); color: #000; }
+        .btn-dispute { background: var(--red); color: #fff; width: 100%; margin-top: 10px; font-size: 0.7rem; }
+
+        .chat-input-area { display: flex; gap: 10px; }
+        .chat-input-area input { flex: 1; background: #14362d; border: 1px solid rgba(0,255,136,0.2); padding: 12px; border-radius: 8px; color: white; outline: none; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>BUSD P2P MARKET</h1>
-        <p>Direct Peer-to-Peer Trading with Escrow Protection</p>
+    <div class="container">
+        <header>
+            <div class="badge">🛡️ ADMIN ESCROW ACTIVE</div>
+            <h2 style="margin-top: 10px; color: var(--emerald);">BUSD P2P MARKET</h2>
+        </header>
+
+        <div class="ad-card">
+            <div class="seller-row">
+                <div class="avatar">M</div>
+                <div>
+                    <h4 style="margin:0; font-size: 0.9rem;">Verified Merchant_#742</h4>
+                    <p style="font-size: 0.65rem; color: var(--emerald);">● Online | 124 Trades Done</p>
+                </div>
+            </div>
+
+            <div class="price-section">
+                <div>
+                    <p style="font-size: 0.7rem; opacity: 0.6;">Amount Available</p>
+                    <p style="font-size: 1.1rem; font-weight: 600;">10,000 BUSD</p>
+                </div>
+                <div style="text-align: right;">
+                    <span class="price">₹1.10</span>
+                </div>
+            </div>
+
+            <div class="pay-methods">
+                <span class="method-tag">UPI (GPay/PhonePe)</span>
+                <span class="method-tag">IMPS / Bank Transfer</span>
+            </div>
+
+            <button onclick="openChat()" class="btn-buy">BUY BUSD (CHAT & PAY)</button>
+        </div>
     </div>
 
-    <div class="container">
-        
-        <div class="section-label">BUY BUSD (Get from Sellers)</div>
-        
-        <div class="ad-card">
-            <div class="user-info">
-                <div class="name">Mangesh J. <span class="badge">VERIFIED</span></div>
-                <div class="limit">Limit: 500 - 5000 BUSD</div>
-                <div style="font-size: 0.65rem; color: #2ecc71;">✅ 100% Completion Rate</div>
+    <div id="chatModal">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <div style="width:30px; height:30px; background:var(--emerald); border-radius:50%; text-align:center; color:#000; font-weight:700; line-height:30px;">M</div>
+                    <span style="font-size: 0.9rem;">Trade with Merchant_#742</span>
+                </div>
+                <span onclick="closeChat()" style="cursor:pointer; font-size: 1.5rem;">&times;</span>
             </div>
-            <div class="price-box">
-                <div class="price">₹0.92</div>
-                <a href="https://wa.me/919730698063?text=Hi, I want to BUY BUSD." class="action-btn buy-btn">BUY Now</a>
+
+            <div class="escrow-alert">
+                🔐 <b>ESCROW SECURED:</b> 10,000 BUSD are locked by System.
+            </div>
+
+            <div class="chat-body" id="chatBody">
+                <div class="msg msg-in">
+                    <b>System:</b> Trade Started. Seller cannot withdraw tokens until trade ends or dispute is settled.
+                </div>
+                <div class="msg msg-in">
+                    <b>Merchant:</b> Hello! Please send ₹11,000 for 10,000 BUSD. After payment, click 'I HAVE PAID' and upload screenshot.
+                </div>
+            </div>
+
+            <div class="trade-footer">
+                <div class="action-btns">
+                    <button class="btn-action btn-paid" onclick="actionNotify('Buyer has marked as PAID! Check your account.')">I HAVE PAID</button>
+                    <button class="btn-action btn-release" onclick="actionNotify('Tokens Released to Buyer!')">RELEASE BUSD</button>
+                </div>
+                
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="Message or UPI details...">
+                    <button style="background:var(--emerald); border:none; padding:10px; border-radius:8px; cursor:pointer;" onclick="sendMessage()">SEND</button>
+                </div>
+
+                <button class="btn-action btn-dispute" onclick="actionNotify('🚨 Dispute Raised! Admin will contact you on +919730698063.')">APPEAL / DISPUTE (HELP)</button>
             </div>
         </div>
-
-        <div class="section-label">SELL BUSD (Give to Buyers)</div>
-        
-        <div class="ad-card">
-            <div class="user-info">
-                <div class="name">Crypto_King <span class="badge" style="background:#3498db; color:white;">VIP</span></div>
-                <div class="limit">Buying Limit: 1000 - 20,000 BUSD</div>
-                <div style="font-size: 0.65rem; color: #f1c40f;">🕒 Instant Payment (UPI)</div>
-            </div>
-            <div class="price-box">
-                <div class="price sell-price">₹0.88</div>
-                <a href="https://wa.me/919730698063?text=Hi, I want to SELL my BUSD to Crypto_King." class="action-btn sell-btn">SELL Now</a>
-            </div>
-        </div>
-
-        <div class="sell-form-container">
-            <h3>📢 Want to Post your Own Ad?</h3>
-            <p style="font-size: 0.7rem; opacity: 0.6; margin-bottom: 15px;">Send your price and amount to Admin for listing.</p>
-            
-            <input type="number" id="userAmt" placeholder="Amount (e.g. 1500 BUSD)">
-            <input type="number" step="0.01" id="userPrice" placeholder="Your Price (e.g. 0.94 INR)">
-            <input type="text" id="userContact" placeholder="Your WhatsApp/Telegram ID">
-            
-            <button class="submit-btn" onclick="requestAd()">Request Ad Listing</button>
-        </div>
-
-        <a href="index.html" class="nav-back">← Back to Main Website</a>
     </div>
 
     <script>
-        function requestAd() {
-            let amt = document.getElementById('userAmt').value;
-            let price = document.getElementById('userPrice').value;
-            let contact = document.getElementById('userContact').value;
+        function openChat() { document.getElementById('chatModal').style.display = 'flex'; }
+        function closeChat() { document.getElementById('chatModal').style.display = 'none'; }
+        
+        function actionNotify(msg) { alert("P2P System: " + msg); }
 
-            if(!amt || !price || !contact) {
-                alert("Bhai, saari details bhariye!");
-                return;
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const chatBody = document.getElementById('chatBody');
+            if(input.value.trim() !== "") {
+                const newMsg = document.createElement('div');
+                newMsg.className = 'msg msg-out';
+                newMsg.innerText = input.value;
+                chatBody.appendChild(newMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+                input.value = "";
             }
-
-            let message = `🚀 *NEW P2P AD REQUEST*%0A%0A*Action:* I want to post an Ad%0A*Amount:* ${amt} BUSD%0A*Price:* ₹${price}%0A*My Contact:* ${contact}%0A%0A_Admin, please check and list my ad._`;
-            
-            // Your WhatsApp Number
-            window.open(`https://wa.me/919730698063?text=${message}`, '_blank');
         }
     </script>
 
