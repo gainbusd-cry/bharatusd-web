@@ -3,110 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUSD | Digital Asset Gateway</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>BUSD | The OG Digital Asset</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #00ff88; --bg: #020617; --card: #0f172a; --text: #f8fafc; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); color: var(--text); padding-bottom: 80px; }
-
-        /* Header / Wallet Info */
-        .header { padding: 30px 20px; background: linear-gradient(180deg, #1e293b 0%, #020617 100%); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .wallet-label { font-size: 0.75rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
-        .balance { font-size: 2.2rem; font-weight: 700; margin: 5px 0; color: var(--primary); }
-        .sub-balance { font-size: 0.9rem; opacity: 0.8; }
-
-        /* Action Buttons */
-        .actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 20px; margin-top: -30px; }
-        .action-item { background: var(--card); padding: 15px 10px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
-        .action-icon { font-size: 1.2rem; margin-bottom: 5px; display: block; }
-        .action-label { font-size: 0.65rem; font-weight: 600; opacity: 0.8; }
-
-        /* Market Cards */
-        .section-label { padding: 20px 20px 10px; font-size: 0.85rem; font-weight: 600; color: var(--primary); }
-        .market-card { background: var(--card); margin: 0 20px 15px; padding: 18px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.05); }
-        .coin-info { display: flex; align-items: center; gap: 12px; }
-        .coin-icon { width: 35px; height: 35px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #000; }
+        :root { 
+            --primary: #00ff88; 
+            --bg: #010409; 
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #ffffff;
+        }
         
-        .chart-mini { width: 60px; height: 30px; border-bottom: 2px solid var(--primary); opacity: 0.5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        /* Bottom Nav */
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #0f172a; display: flex; justify-content: space-around; padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .nav-link { color: #94a3b8; text-decoration: none; text-align: center; font-size: 0.6rem; }
-        .nav-link.active { color: var(--primary); font-weight: 700; }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            background-image: radial-gradient(circle at 50% -20%, #003d25 0%, #010409 60%);
+            min-height: 100vh;
+            padding-bottom: 90px;
+        }
+
+        /* Premium Header */
+        .header { 
+            padding: 40px 25px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+        
+        .user-profile { display: flex; align-items: center; gap: 12px; }
+        .logo-img { 
+            width: 45px; height: 45px; border-radius: 50%; 
+            border: 2px solid var(--primary); padding: 2px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Portfolio Card - Glass Effect */
+        .portfolio-card {
+            margin: 0 20px;
+            padding: 30px 25px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        .portfolio-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--primary), transparent);
+            animation: rotate 10s linear infinite; opacity: 0.1;
+        }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+
+        .bal-label { font-size: 0.8rem; opacity: 0.5; font-weight: 600; letter-spacing: 1px; }
+        .main-bal { font-size: 2.8rem; font-weight: 800; margin: 10px 0; letter-spacing: -1px; }
+        .profit-tag { 
+            background: rgba(0, 255, 136, 0.15); color: var(--primary); 
+            padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700;
+        }
+
+        /* Premium Actions */
+        .grid-actions {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 15px; padding: 25px 20px;
+        }
+        .action-btn {
+            background: var(--glass); border: 1px solid var(--border);
+            padding: 18px 10px; border-radius: 20px; text-align: center;
+            transition: 0.3s; cursor: pointer;
+        }
+        .action-btn:active { transform: scale(0.9); background: rgba(0, 255, 136, 0.1); }
+        .action-icon { font-size: 1.4rem; display: block; margin-bottom: 8px; }
+        .action-text { font-size: 0.65rem; font-weight: 700; opacity: 0.8; }
+
+        /* Market Section */
+        .section-title { padding: 10px 25px; font-size: 1rem; font-weight: 800; display: flex; justify-content: space-between; }
+        .market-list { padding: 0 20px; }
+        .coin-row {
+            background: var(--glass); border: 1px solid var(--border);
+            padding: 20px; border-radius: 24px; display: flex;
+            justify-content: space-between; align-items: center; margin-bottom: 12px;
+        }
+        .coin-meta h4 { font-size: 1rem; font-weight: 700; }
+        .coin-meta p { font-size: 0.7rem; opacity: 0.4; }
+        .price-meta { text-align: right; }
+        .price-now { font-weight: 800; font-size: 1.1rem; }
+        .price-up { color: var(--primary); font-size: 0.7rem; font-weight: 700; }
+
+        /* Bottom Tab Bar */
+        .tab-bar {
+            position: fixed; bottom: 20px; left: 20px; right: 20px;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(25px);
+            border: 1px solid var(--border); border-radius: 30px;
+            display: flex; justify-content: space-around; padding: 18px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .tab-item { text-decoration: none; text-align: center; transition: 0.3s; }
+        .tab-icon { font-size: 1.3rem; display: block; opacity: 0.4; }
+        .tab-label { font-size: 0.6rem; font-weight: 700; opacity: 0.4; margin-top: 4px; display: block; }
+        .tab-item.active .tab-icon, .tab-item.active .tab-label { opacity: 1; color: var(--primary); }
+
+        /* Smooth UI Buttons */
+        .utility-banner {
+            margin: 20px; padding: 20px; border-radius: 22px;
+            background: linear-gradient(90deg, #00ff88 0%, #00bd65 100%);
+            color: #000; font-weight: 800; display: flex; justify-content: space-between; align-items: center;
+        }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <p class="wallet-label">Total Portfolio Value</p>
-        <h1 class="balance">₹0.00</h1>
-        <p class="sub-balance">0.0000 BUSD <span style="color: var(--primary);">+0.0%</span></p>
-    </div>
-
-    <div class="actions">
-        <div class="action-item" onclick="location.href='p2p.html'">
-            <span class="action-icon">📥</span>
-            <span class="action-label">Deposit</span>
-        </div>
-        <div class="action-item">
-            <span class="action-icon">📤</span>
-            <span class="action-label">Withdraw</span>
-        </div>
-        <div class="action-item">
-            <span class="action-icon">🔄</span>
-            <span class="action-label">Swap</span>
-        </div>
-        <div class="action-item">
-            <span class="action-icon">📊</span>
-            <span class="action-label">Trade</span>
-        </div>
-    </div>
-
-    <div class="section-label">MARKET ASSETS</div>
-    
-    <div class="market-card">
-        <div class="coin-info">
-            <div class="coin-icon" style="background: var(--primary);">B</div>
+        <div class="user-profile">
+            <img src="logo.png" class="logo-img" alt="BUSD">
             <div>
-                <h4 style="font-size: 0.9rem;">Bharat USD</h4>
-                <p style="font-size: 0.7rem; opacity: 0.5;">BUSD / INR</p>
+                <p style="font-size: 0.6rem; opacity: 0.5;">WELCOME BACK,</p>
+                <h4 style="font-size: 0.9rem;">VIJU BHAI</h4>
             </div>
         </div>
-        <div class="chart-mini"></div>
-        <div style="text-align: right;">
-            <p style="font-size: 0.9rem; font-weight: 700;">₹0.90</p>
-            <p style="font-size: 0.65rem; color: var(--primary);">+0.12%</p>
+        <div style="background: var(--glass); padding: 10px; border-radius: 12px; border: 1px solid var(--border);">
+            🔔
         </div>
     </div>
 
-    <div class="market-card">
-        <div class="coin-info">
-            <div class="coin-icon" style="background: #f7931a; color: #fff;">₿</div>
-            <div>
-                <h4 style="font-size: 0.9rem;">Bitcoin</h4>
-                <p style="font-size: 0.7rem; opacity: 0.5;">BTC / INR</p>
+    <div class="portfolio-card">
+        <p class="bal-label">TOTAL ASSETS VALUE</p>
+        <h1 class="main-bal">₹0.00</h1>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <span class="profit-tag">+$0.00 (0%)</span>
+            <span style="font-size: 0.7rem; opacity: 0.4;">Last 24h</span>
+        </div>
+    </div>
+
+    <div class="grid-actions">
+        <div class="action-btn" onclick="window.location.href='p2p.html'">
+            <span class="action-icon">🚀</span>
+            <span class="action-text">DEPOSIT</span>
+        </div>
+        <div class="action-btn" onclick="alert('Withdrawals Locked: Next 30 Days')">
+            <span class="action-icon">💰</span>
+            <span class="action-text">WITHDRAW</span>
+        </div>
+        <div class="action-btn" onclick="alert('Swap Engine Loading...')">
+            <span class="action-icon">💎</span>
+            <span class="action-text">STAKE</span>
+        </div>
+        <div class="action-btn" onclick="alert('Scan Feature Launching Soon')">
+            <span class="action-icon">🤳</span>
+            <span class="action-text">SCAN</span>
+        </div>
+    </div>
+
+    <div class="utility-banner">
+        <span>BUSD PAY MERCHANT HUB</span>
+        <span style="font-size: 1.2rem;">→</span>
+    </div>
+
+    <div class="section-title">
+        <span>MARKET TRENDS</span>
+        <span style="color: var(--primary); font-size: 0.7rem;">VIEW ALL</span>
+    </div>
+
+    <div class="market-list">
+        <div class="coin-row">
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <div style="width: 40px; height: 40px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #000;">B</div>
+                <div class="coin-meta">
+                    <h4>Bharat USD</h4>
+                    <p>BUSD / INR</p>
+                </div>
+            </div>
+            <div class="price-meta">
+                <p class="price-now">₹0.90</p>
+                <p class="price-up">+0.12%</p>
             </div>
         </div>
-        <div class="chart-mini" style="border-color: #f7931a;"></div>
-        <div style="text-align: right;">
-            <p style="font-size: 0.9rem; font-weight: 700;">₹62,45,000</p>
-            <p style="font-size: 0.65rem; color: #f7931a;">-1.5%</p>
+
+        <div class="coin-row" style="opacity: 0.6;">
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <div style="width: 40px; height: 40px; background: #f7931a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #fff;">₿</div>
+                <div class="coin-meta">
+                    <h4>Bitcoin</h4>
+                    <p>BTC / INR</p>
+                </div>
+            </div>
+            <div class="price-meta">
+                <p class="price-now">₹62.4L</p>
+                <p style="color: #ff4d4d; font-size: 0.7rem;">-1.2%</p>
+            </div>
         </div>
     </div>
 
-    <div class="section-label">UTILITY GATEWAY</div>
-    <div style="padding: 0 20px;">
-        <div style="background: rgba(0,255,136,0.05); border: 1px dashed var(--primary); padding: 15px; border-radius: 12px; font-size: 0.75rem; text-align: center;">
-            🚀 <b>BUSD Pay:</b> Scan any Merchant QR to pay directly from your wallet.
-        </div>
-    </div>
-
-    <nav class="bottom-nav">
-        <a href="index.html" class="nav-link active">🏠<br>Home</a>
-        <a href="#" class="nav-link">📉<br>Markets</a>
-        <a href="p2p.html" class="nav-link">🔄<br>P2P</a>
-        <a href="#" class="nav-link">👤<br>Account</a>
+    <nav class="tab-bar">
+        <a href="index.html" class="tab-item active">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">HOME</span>
+        </a>
+        <a href="p2p.html" class="tab-item">
+            <span class="tab-icon">🤝</span>
+            <span class="tab-label">P2P</span>
+        </a>
+        <a href="#" class="tab-item">
+            <span class="tab-icon">📊</span>
+            <span class="tab-label">TRADE</span>
+        </a>
+        <a href="#" class="tab-item">
+            <span class="tab-icon">👤</span>
+            <span class="tab-label">PROFILE</span>
+        </a>
     </nav>
 
 </body>
