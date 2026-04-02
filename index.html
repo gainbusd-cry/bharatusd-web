@@ -3,217 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUSD | The OG Digital Asset</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Bharat USD | The Future of Utility Chains</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --primary: #00ff88; 
-            --bg: #010409; 
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --text: #ffffff;
-        }
+        :root { --primary: #00ff88; --bg: #02060a; --glass: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.1); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg); color: #fff; line-height: 1.6; }
+
+        /* Navbar */
+        nav { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; background: rgba(2,6,10,0.8); backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid var(--border); }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; color: var(--primary); }
+        .nav-links { display: flex; gap: 25px; font-size: 0.8rem; font-weight: 600; }
+        .nav-links a { color: #fff; text-decoration: none; opacity: 0.7; transition: 0.3s; }
+        .nav-links a:hover { opacity: 1; color: var(--primary); }
+        .btn-p2p { background: var(--primary); color: #000; padding: 10px 20px; border-radius: 50px; font-weight: 800; text-decoration: none; font-size: 0.8rem; }
+
+        /* Hero Section */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 100px 20px; background: radial-gradient(circle at 50% 50%, #004d2c 0%, #02060a 70%); }
+        .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
+        .hero p { max-width: 600px; font-size: 1.1rem; opacity: 0.6; margin-bottom: 40px; }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        body { 
-            background: var(--bg); 
-            color: var(--text); 
-            background-image: radial-gradient(circle at 50% -20%, #003d25 0%, #010409 60%);
-            min-height: 100vh;
-            padding-bottom: 90px;
-        }
+        .live-ticker { background: var(--glass); border: 1px solid var(--border); padding: 15px 30px; border-radius: 50px; display: flex; gap: 20px; align-items: center; font-weight: 700; }
+        .pulse { width: 10px; height: 10px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary); animation: blink 1.5s infinite; }
+        @keyframes blink { 0% { opacity: 0.2; } 50% { opacity: 1; } 100% { opacity: 0.2; } }
 
-        /* Premium Header */
-        .header { 
-            padding: 40px 25px 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-        }
-        
-        .user-profile { display: flex; align-items: center; gap: 12px; }
-        .logo-img { 
-            width: 45px; height: 45px; border-radius: 50%; 
-            border: 2px solid var(--primary); padding: 2px;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
-        }
+        /* Section Styling */
+        section { padding: 80px 5%; }
+        .section-header { margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        .section-header p { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; }
 
-        /* Portfolio Card - Glass Effect */
-        .portfolio-card {
-            margin: 0 20px;
-            padding: 30px 25px;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            position: relative;
-            overflow: hidden;
-        }
-        .portfolio-card::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(from 0deg, transparent, var(--primary), transparent);
-            animation: rotate 10s linear infinite; opacity: 0.1;
-        }
-        @keyframes rotate { 100% { transform: rotate(360deg); } }
+        /* Grid Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 25px; transition: 0.3s; }
+        .card:hover { border-color: var(--primary); transform: translateY(-10px); }
+        .card h3 { margin-bottom: 15px; font-size: 1.5rem; }
+        .card p { opacity: 0.5; font-size: 0.9rem; }
 
-        .bal-label { font-size: 0.8rem; opacity: 0.5; font-weight: 600; letter-spacing: 1px; }
-        .main-bal { font-size: 2.8rem; font-weight: 800; margin: 10px 0; letter-spacing: -1px; }
-        .profit-tag { 
-            background: rgba(0, 255, 136, 0.15); color: var(--primary); 
-            padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700;
-        }
+        /* Tokenomics */
+        .tokenomics-wrap { background: #0a1f1a; border-radius: 30px; padding: 50px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; }
+        .token-stat h4 { font-size: 2.5rem; color: var(--primary); }
+        .token-stat p { opacity: 0.6; text-transform: uppercase; font-size: 0.7rem; }
 
-        /* Premium Actions */
-        .grid-actions {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 15px; padding: 25px 20px;
-        }
-        .action-btn {
-            background: var(--glass); border: 1px solid var(--border);
-            padding: 18px 10px; border-radius: 20px; text-align: center;
-            transition: 0.3s; cursor: pointer;
-        }
-        .action-btn:active { transform: scale(0.9); background: rgba(0, 255, 136, 0.1); }
-        .action-icon { font-size: 1.4rem; display: block; margin-bottom: 8px; }
-        .action-text { font-size: 0.65rem; font-weight: 700; opacity: 0.8; }
+        /* Roadmap Timeline */
+        .roadmap-item { border-left: 2px solid var(--primary); padding-left: 30px; margin-bottom: 40px; position: relative; }
+        .roadmap-item::before { content: ''; position: absolute; left: -9px; top: 0; width: 16px; height: 16px; background: var(--primary); border-radius: 50%; }
 
-        /* Market Section */
-        .section-title { padding: 10px 25px; font-size: 1rem; font-weight: 800; display: flex; justify-content: space-between; }
-        .market-list { padding: 0 20px; }
-        .coin-row {
-            background: var(--glass); border: 1px solid var(--border);
-            padding: 20px; border-radius: 24px; display: flex;
-            justify-content: space-between; align-items: center; margin-bottom: 12px;
-        }
-        .coin-meta h4 { font-size: 1rem; font-weight: 700; }
-        .coin-meta p { font-size: 0.7rem; opacity: 0.4; }
-        .price-meta { text-align: right; }
-        .price-now { font-weight: 800; font-size: 1.1rem; }
-        .price-up { color: var(--primary); font-size: 0.7rem; font-weight: 700; }
+        footer { text-align: center; padding: 50px; border-top: 1px solid var(--border); opacity: 0.5; font-size: 0.8rem; }
 
-        /* Bottom Tab Bar */
-        .tab-bar {
-            position: fixed; bottom: 20px; left: 20px; right: 20px;
-            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(25px);
-            border: 1px solid var(--border); border-radius: 30px;
-            display: flex; justify-content: space-around; padding: 18px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        .tab-item { text-decoration: none; text-align: center; transition: 0.3s; }
-        .tab-icon { font-size: 1.3rem; display: block; opacity: 0.4; }
-        .tab-label { font-size: 0.6rem; font-weight: 700; opacity: 0.4; margin-top: 4px; display: block; }
-        .tab-item.active .tab-icon, .tab-item.active .tab-label { opacity: 1; color: var(--primary); }
-
-        /* Smooth UI Buttons */
-        .utility-banner {
-            margin: 20px; padding: 20px; border-radius: 22px;
-            background: linear-gradient(90deg, #00ff88 0%, #00bd65 100%);
-            color: #000; font-weight: 800; display: flex; justify-content: space-between; align-items: center;
-        }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="user-profile">
-            <img src="logo.png" class="logo-img" alt="BUSD">
-            <div>
-                <p style="font-size: 0.6rem; opacity: 0.5;">WELCOME BACK,</p>
-                <h4 style="font-size: 0.9rem;">VIJU BHAI</h4>
-            </div>
+    <nav>
+        <div class="logo"><img src="logo.png" style="width:30px; border-radius:50%;" alt=""> BHARAT USD</div>
+        <div class="nav-links">
+            <a href="#about">ABOUT</a>
+            <a href="#chain">CHAIN</a>
+            <a href="#tokenomics">TOKENOMICS</a>
+            <a href="#roadmap">ROADMAP</a>
         </div>
-        <div style="background: var(--glass); padding: 10px; border-radius: 12px; border: 1px solid var(--border);">
-            🔔
-        </div>
-    </div>
-
-    <div class="portfolio-card">
-        <p class="bal-label">TOTAL ASSETS VALUE</p>
-        <h1 class="main-bal">₹0.00</h1>
-        <div style="display: flex; gap: 10px; align-items: center;">
-            <span class="profit-tag">+$0.00 (0%)</span>
-            <span style="font-size: 0.7rem; opacity: 0.4;">Last 24h</span>
-        </div>
-    </div>
-
-    <div class="grid-actions">
-        <div class="action-btn" onclick="window.location.href='p2p.html'">
-            <span class="action-icon">🚀</span>
-            <span class="action-text">DEPOSIT</span>
-        </div>
-        <div class="action-btn" onclick="alert('Withdrawals Locked: Next 30 Days')">
-            <span class="action-icon">💰</span>
-            <span class="action-text">WITHDRAW</span>
-        </div>
-        <div class="action-btn" onclick="alert('Swap Engine Loading...')">
-            <span class="action-icon">💎</span>
-            <span class="action-text">STAKE</span>
-        </div>
-        <div class="action-btn" onclick="alert('Scan Feature Launching Soon')">
-            <span class="action-icon">🤳</span>
-            <span class="action-text">SCAN</span>
-        </div>
-    </div>
-
-    <div class="utility-banner">
-        <span>BUSD PAY MERCHANT HUB</span>
-        <span style="font-size: 1.2rem;">→</span>
-    </div>
-
-    <div class="section-title">
-        <span>MARKET TRENDS</span>
-        <span style="color: var(--primary); font-size: 0.7rem;">VIEW ALL</span>
-    </div>
-
-    <div class="market-list">
-        <div class="coin-row">
-            <div style="display: flex; gap: 15px; align-items: center;">
-                <div style="width: 40px; height: 40px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #000;">B</div>
-                <div class="coin-meta">
-                    <h4>Bharat USD</h4>
-                    <p>BUSD / INR</p>
-                </div>
-            </div>
-            <div class="price-meta">
-                <p class="price-now">₹0.90</p>
-                <p class="price-up">+0.12%</p>
-            </div>
-        </div>
-
-        <div class="coin-row" style="opacity: 0.6;">
-            <div style="display: flex; gap: 15px; align-items: center;">
-                <div style="width: 40px; height: 40px; background: #f7931a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #fff;">₿</div>
-                <div class="coin-meta">
-                    <h4>Bitcoin</h4>
-                    <p>BTC / INR</p>
-                </div>
-            </div>
-            <div class="price-meta">
-                <p class="price-now">₹62.4L</p>
-                <p style="color: #ff4d4d; font-size: 0.7rem;">-1.2%</p>
-            </div>
-        </div>
-    </div>
-
-    <nav class="tab-bar">
-        <a href="index.html" class="tab-item active">
-            <span class="tab-icon">🏠</span>
-            <span class="tab-label">HOME</span>
-        </a>
-        <a href="p2p.html" class="tab-item">
-            <span class="tab-icon">🤝</span>
-            <span class="tab-label">P2P</span>
-        </a>
-        <a href="#" class="tab-item">
-            <span class="tab-icon">📊</span>
-            <span class="tab-label">TRADE</span>
-        </a>
-        <a href="#" class="tab-item">
-            <span class="tab-icon">👤</span>
-            <span class="tab-label">PROFILE</span>
-        </a>
+        <a href="p2p.html" class="btn-p2p">JOIN P2P</a>
     </nav>
+
+    <section class="hero">
+        <div class="live-ticker">
+            <div class="pulse"></div> BUSD / INR: ₹0.90 <span style="color:var(--primary); margin-left:10px;">+0.12%</span>
+        </div>
+        <h1>The Next Generation <br>Utility Protocol.</h1>
+        <p>A high-performance digital asset designed for real-world merchant integration and sustainable decentralized economy.</p>
+        <div style="display:flex; gap:20px;">
+            <a href="#chain" style="background:#fff; color:#000; padding:15px 40px; border-radius:50px; font-weight:800; text-decoration:none;">EXPLORE CHAIN</a>
+            <a href="p2p.html" style="border:1px solid #fff; color:#fff; padding:15px 40px; border-radius:50px; font-weight:800; text-decoration:none;">P2P MARKET</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-header">
+            <p>Our Vision</p>
+            <h2>Empowering Local Economy</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>01. Institutional Security</h3>
+                <p>Advanced escrow protocols ensure every P2P transaction is backed by locked liquidity and smart contract security.</p>
+            </div>
+            <div class="card">
+                <h3>02. Merchant Ready</h3>
+                <p>Designed to be spent. Our ₹0.90 Buy vs ₹0.80 Spend logic creates a self-sustaining development fund.</p>
+            </div>
+            <div class="card">
+                <h3>03. Low Latency</h3>
+                <p>Powered by the Arbitrum L2 Network for ultra-fast transactions and near-zero gas fees.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="chain" style="background: rgba(0,255,136,0.02);">
+        <div class="section-header">
+            <p>Technical Specs</p>
+            <h2>Blockchain Foundation</h2>
+        </div>
+        <div class="tokenomics-wrap">
+            <div class="token-stat">
+                <p>Network</p>
+                <h4>Arbitrum</h4>
+            </div>
+            <div class="token-stat">
+                <p>Protocol</p>
+                <h4>ERC-20</h4>
+            </div>
+            <div class="token-stat">
+                <p>Avg. Fee</p>
+                <h4><$0.01</h4>
+            </div>
+            <div class="token-stat">
+                <p>Total Supply</p>
+                <h4>1.0B BUSD</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="tokenomics">
+        <div class="section-header">
+            <p>Sustainability</p>
+            <h2>Tokenomics</h2>
+        </div>
+        <div class="grid">
+            <div class="card" style="border-left: 5px solid var(--primary);">
+                <h3>5% Staking Reward</h3>
+                <p>Investors staking ₹25,000+ receive 5% fixed monthly returns backed by the development treasury.</p>
+            </div>
+            <div class="card" style="border-left: 5px solid #ffd700;">
+                <h3>5-Level Affiliate</h3>
+                <p>Multi-tier referral engine distributing 2.5% to 0.5% rewards across five depths of network growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap">
+        <div class="section-header">
+            <p>The Journey</p>
+            <h2>Strategic Roadmap</h2>
+        </div>
+        <div class="roadmap-item">
+            <h3>Phase 1: Genesis</h3>
+            <p>BUSD Launch on Arbitrum, P2P Escrow Activation, and First 500 Pune Merchant Onboarding.</p>
+        </div>
+        <div class="roadmap-item">
+            <h3>Phase 2: Expansion</h3>
+            <p>BUSD Merchant App Release, QR Payment Integration, and CEX Listing Application.</p>
+        </div>
+        <div class="roadmap-item" style="opacity: 0.5;">
+            <h3>Phase 3: Global Utility</h3>
+            <p>International P2P Expansion, Cross-chain Bridge, and 1000cr Ecosystem Milestone.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Bharat USD Protocol. All Rights Reserved. <br> Powered by Arbitrum Layer-2 Security.</p>
+    </footer>
 
 </body>
 </html>
