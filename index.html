@@ -3,126 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="google-site-verification" content="jbQHCNFpMko-cQwRmERbW4v939gVLB3WVC_b-s3upRA" />
-    <title>Bharat USD (BUSD) - Official Token | Top Crypto India | Buy BUSD INR</title>
-    <meta name="description" content="Bharat USD (BUSD) is India's premier digital asset on Arbitrum. Buy BUSD at ₹0.90. Secure P2P Market, High Utility, and Auto-Burn mechanism. Join the future of Indian Crypto.">
-    <meta name="keywords" content="Bharat USD, BUSD, Buy BUSD India, Top Crypto India, Best Crypto Coin 2026, BUSD Arbitrum, Crypto P2P India, Bharat USD Official, BUSD Price INR">
-    <meta name="author" content="BUSD Official Team">
-    
-    <meta property="og:title" content="Bharat USD (BUSD) - Official Platform">
-    <meta property="og:description" content="India's leading utility token on Arbitrum. Buy at ₹0.90. Secure & Trusted.">
-    <meta property="og:image" content="https://gainbusd-cry.github.io/bharatusd-web/logo.PNG">
-    <meta property="og:url" content="https://gainbusd-cry.github.io/bharatusd-web/">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bharat USD (BUSD) - Top Indian Crypto">
-    <meta name="twitter:image" content="https://gainbusd-cry.github.io/bharatusd-web/logo.PNG">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>BUSD | Digital Asset Gateway</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --deep-green: #0a1f1a; --emerald: #00ff88; --soft-green: #14362d; --gold: #FFD700; --white: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: var(--deep-green); color: var(--white); overflow-x: hidden; scroll-behavior: smooth; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 60px 0; }
-        .section-title { font-size: 2.2rem; color: var(--emerald); text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
-        .btn { display: inline-block; padding: 14px 30px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: 0.4s; text-align: center; cursor: pointer; border: none; }
-        
-        /* Updated Main Button Styles */
-        .btn-emerald { background: linear-gradient(135deg, #00ff88, #00c46a); color: var(--deep-green); box-shadow: 0 8px 15px rgba(0, 255, 136, 0.2); }
-        .btn-outline { border: 2px solid var(--emerald); color: var(--emerald); background: transparent; font-weight: bold; }
-        
-        .btn:hover { transform: translateY(-3px); opacity: 0.9; }
+        :root { --primary: #00ff88; --bg: #020617; --card: #0f172a; --text: #f8fafc; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--text); padding-bottom: 80px; }
 
-        /* Header Fixes */
-        header { background: rgba(10, 31, 26, 0.95); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 255, 136, 0.1); }
-        .nav { display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { font-size: 1.6rem; font-weight: 800; color: var(--emerald); letter-spacing: 1px; }
-        .nav-btns { display: flex; flex-direction: column; gap: 4px; }
+        /* Header / Wallet Info */
+        .header { padding: 30px 20px; background: linear-gradient(180deg, #1e293b 0%, #020617 100%); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .wallet-label { font-size: 0.75rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+        .balance { font-size: 2.2rem; font-weight: 700; margin: 5px 0; color: var(--primary); }
+        .sub-balance { font-size: 0.9rem; opacity: 0.8; }
 
-        /* Hero Section Fixes */
-        #home { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 80px; background: radial-gradient(circle at center, #14362d 0%, #0a1f1a 100%); }
-        
-        /* 🔥 LOGO FIX (Circle + Glow) 🔥 */
-        .hero-logo { 
-            width: 160px; 
-            height: 160px;
-            object-fit: contain;
-            border-radius: 50%;
-            background: white; 
-            padding: 10px;
-            box-shadow: 0 0 40px rgba(0, 255, 136, 0.5); 
-            margin-bottom: 20px; 
-            animation: float 3s ease-in-out infinite; 
-        }
-        
-        .hero-content h1 { font-size: 2.8rem; font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 10px; }
-        .live-rate-tag { background: rgba(0, 255, 136, 0.1); border: 1px solid var(--emerald); color: var(--emerald); display: inline-block; padding: 6px 15px; border-radius: 50px; margin: 15px 0; font-weight: 600; font-size: 1rem; }
-        .hero-btns { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
+        /* Action Buttons */
+        .actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 20px; margin-top: -30px; }
+        .action-item { background: var(--card); padding: 15px 10px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
+        .action-icon { font-size: 1.2rem; margin-bottom: 5px; display: block; }
+        .action-label { font-size: 0.65rem; font-weight: 600; opacity: 0.8; }
 
-        .strategy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .strategy-card { background: var(--soft-green); border: 1px solid rgba(0, 255, 136, 0.1); padding: 30px; border-radius: 15px; text-align: left; }
-        .strategy-card h3 { color: var(--emerald); margin-bottom: 15px; }
-        #whitepaper-section { background: rgba(255,255,255,0.03); border-radius: 20px; padding: 60px 20px; text-align: center; margin: 40px 0; border: 1px dashed var(--emerald); }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        footer { padding: 40px 0; border-top: 1px solid rgba(0, 255, 136, 0.1); text-align: center; }
-        @media (max-width: 768px) { .hero-content h1 { font-size: 2.2rem; } .hero-btns .btn { width: 90%; margin: 0 auto; display: block; } }
+        /* Market Cards */
+        .section-label { padding: 20px 20px 10px; font-size: 0.85rem; font-weight: 600; color: var(--primary); }
+        .market-card { background: var(--card); margin: 0 20px 15px; padding: 18px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.05); }
+        .coin-info { display: flex; align-items: center; gap: 12px; }
+        .coin-icon { width: 35px; height: 35px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #000; }
+        
+        .chart-mini { width: 60px; height: 30px; border-bottom: 2px solid var(--primary); opacity: 0.5; }
+        
+        /* Bottom Nav */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #0f172a; display: flex; justify-content: space-around; padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .nav-link { color: #94a3b8; text-decoration: none; text-align: center; font-size: 0.6rem; }
+        .nav-link.active { color: var(--primary); font-weight: 700; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container nav">
-            <div class="nav-logo">BUSD</div>
-            <div class="nav-btns">
-                <a href="otc.html" class="btn btn-emerald" style="padding: 6px 12px; font-size: 0.6rem; border-radius: 5px;">BUY NOW</a>
-                <a href="p2p.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.6rem; border-radius: 5px; border-color: var(--emerald) !important; color: var(--emerald) !important;">P2P MARKET</a>
+    <div class="header">
+        <p class="wallet-label">Total Portfolio Value</p>
+        <h1 class="balance">₹0.00</h1>
+        <p class="sub-balance">0.0000 BUSD <span style="color: var(--primary);">+0.0%</span></p>
+    </div>
+
+    <div class="actions">
+        <div class="action-item" onclick="location.href='p2p.html'">
+            <span class="action-icon">📥</span>
+            <span class="action-label">Deposit</span>
+        </div>
+        <div class="action-item">
+            <span class="action-icon">📤</span>
+            <span class="action-label">Withdraw</span>
+        </div>
+        <div class="action-item">
+            <span class="action-icon">🔄</span>
+            <span class="action-label">Swap</span>
+        </div>
+        <div class="action-item">
+            <span class="action-icon">📊</span>
+            <span class="action-label">Trade</span>
+        </div>
+    </div>
+
+    <div class="section-label">MARKET ASSETS</div>
+    
+    <div class="market-card">
+        <div class="coin-info">
+            <div class="coin-icon" style="background: var(--primary);">B</div>
+            <div>
+                <h4 style="font-size: 0.9rem;">Bharat USD</h4>
+                <p style="font-size: 0.7rem; opacity: 0.5;">BUSD / INR</p>
             </div>
         </div>
-    </header>
+        <div class="chart-mini"></div>
+        <div style="text-align: right;">
+            <p style="font-size: 0.9rem; font-weight: 700;">₹0.90</p>
+            <p style="font-size: 0.65rem; color: var(--primary);">+0.12%</p>
+        </div>
+    </div>
 
-    <section id="home">
-        <div class="container hero-content">
-            <img src="logo.PNG" alt="Bharat USD BUSD Official Token Logo - Top Crypto India" class="hero-logo">
-            <h1>BHARAT USD <br><span style="color: var(--emerald);">DIGITAL ASSET</span></h1>
-            <div class="live-rate-tag">1 BUSD = ₹0.90 INR</div>
-            <div class="hero-btns">
-                <a href="otc.html" class="btn btn-emerald">START INVESTING</a>
-                <a href="whitepaper.html" class="btn btn-outline" style="border-color: var(--gold) !important; color: var(--gold) !important; margin-left: 0;">VIEW WHITEPAPER</a>
+    <div class="market-card">
+        <div class="coin-info">
+            <div class="coin-icon" style="background: #f7931a; color: #fff;">₿</div>
+            <div>
+                <h4 style="font-size: 0.9rem;">Bitcoin</h4>
+                <p style="font-size: 0.7rem; opacity: 0.5;">BTC / INR</p>
             </div>
         </div>
-    </section>
-
-    <section id="strategy">
-        <div class="container">
-            <h2 class="section-title">BUSD Ecosystem</h2>
-            <div class="strategy-grid">
-                <div class="strategy-card">
-                    <h3>🔥 Auto-Burn</h3>
-                    <p>Supply decreases with every transaction, making BUSD more valuable over time.</p>
-                </div>
-                <div class="strategy-card">
-                    <h3>🛡️ Secure P2P</h3>
-                    <p>Trade directly with users under our official Escrow protection system.</p>
-                </div>
-                <div class="strategy-card">
-                    <h3>📱 Real Utility</h3>
-                    <p>Future support for mobile recharges and bill payments across India.</p>
-                </div>
-            </div>
+        <div class="chart-mini" style="border-color: #f7931a;"></div>
+        <div style="text-align: right;">
+            <p style="font-size: 0.9rem; font-weight: 700;">₹62,45,000</p>
+            <p style="font-size: 0.65rem; color: #f7931a;">-1.5%</p>
         </div>
-    </section>
+    </div>
 
-    <section id="whitepaper-section">
-        <div class="container">
-            <h2 style="color: var(--gold); margin-bottom: 20px;">TECHNICAL WHITEPAPER</h2>
-            <p style="max-width: 700px; margin: 0 auto 30px; opacity: 0.8;">Read our detailed project documentation to understand Tokenomics, Roadmap, and Price Strategy.</p>
-            <a href="whitepaper.html" class="btn btn-emerald">VIEW DIGITAL WHITEPAPER</a>
+    <div class="section-label">UTILITY GATEWAY</div>
+    <div style="padding: 0 20px;">
+        <div style="background: rgba(0,255,136,0.05); border: 1px dashed var(--primary); padding: 15px; border-radius: 12px; font-size: 0.75rem; text-align: center;">
+            🚀 <b>BUSD Pay:</b> Scan any Merchant QR to pay directly from your wallet.
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <p>&copy; 2026 BUSD Official Team | Telegram: @bharatusd</p>
-    </footer>
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-link active">🏠<br>Home</a>
+        <a href="#" class="nav-link">📉<br>Markets</a>
+        <a href="p2p.html" class="nav-link">🔄<br>P2P</a>
+        <a href="#" class="nav-link">👤<br>Account</a>
+    </nav>
 
 </body>
 </html>
