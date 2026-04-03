@@ -3,141 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUSD | Institutional P2P Market</title>
+    <title>BUSD P2P</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #00ff88; --gold: #FFD700; --bg: #010409; --card: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.08); }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background: var(--bg); color: #fff; padding-bottom: 50px; }
-
-        /* Header Area */
-        header { padding: 30px 20px; background: linear-gradient(180deg, #0a1f1a 0%, #010409 100%); border-bottom: 1px solid var(--border); }
-        .badge { background: rgba(0, 255, 136, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; border: 1px solid var(--primary); }
-
-        /* 🚀 SPECIAL OFFER BUTTON (Viju Bhai Special) */
-        .invest-promo {
-            margin: 20px; background: linear-gradient(135deg, #FFD700 0%, #ffae00 100%);
-            padding: 20px; border-radius: 20px; text-align: center; color: #000;
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2); cursor: pointer; transition: 0.3s;
-        }
-        .invest-promo:active { transform: scale(0.95); }
-        .invest-promo h2 { font-size: 1.2rem; font-weight: 800; }
-        .invest-promo p { font-size: 0.8rem; font-weight: 700; opacity: 0.8; }
-
-        /* ➕ POST AD SECTION */
-        .ad-toggle {
-            margin: 0 20px 20px; background: var(--card); border: 1px dashed var(--primary);
-            padding: 15px; border-radius: 15px; text-align: center; cursor: pointer;
-        }
-        #adForm { 
-            display: none; background: #0a1f1a; margin: 0 20px 20px; padding: 25px; 
-            border-radius: 20px; border: 1px solid var(--primary); 
-        }
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; font-size: 0.7rem; opacity: 0.6; margin-bottom: 5px; }
-        .input-group input { 
-            width: 100%; background: #050f0c; border: 1px solid var(--border); 
-            padding: 12px; border-radius: 10px; color: #fff; outline: none;
-        }
-
-        /* P2P AD CARDS */
-        .p2p-card { 
-            background: var(--card); margin: 0 20px 15px; padding: 20px; 
-            border-radius: 20px; border: 1px solid var(--border); 
-        }
-        .merchant-row { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-        .m-avatar { width: 35px; height: 35px; background: var(--primary); border-radius: 50%; color: #000; display: flex; align-items: center; justify-content: center; font-weight: 800; }
-        
-        .price-row { display: flex; justify-content: space-between; align-items: flex-end; margin: 15px 0; }
-        .price-tag { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
-        
-        .buy-btn { 
-            width: 100%; background: var(--primary); color: #000; padding: 14px; 
-            border-radius: 12px; border: none; font-weight: 800; font-size: 0.9rem; cursor: pointer;
-        }
-
-        /* Bottom Nav */
+        :root { --primary: #00ff88; --gold: #FFD700; --bg: #010409; --border: rgba(255,255,255,0.1); }
+        body { background: var(--bg); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; padding-bottom: 80px; }
+        .invest-promo { margin: 20px; background: linear-gradient(135deg, #FFD700 0%, #ffae00 100%); padding: 20px; border-radius: 20px; text-align: center; color: #000; font-weight: 800; cursor: pointer; }
+        .p2p-card { background: rgba(255,255,255,0.03); margin: 20px; padding: 20px; border-radius: 20px; border: 1px solid var(--border); }
+        .buy-btn { width: 100%; background: var(--primary); color: #000; padding: 14px; border-radius: 12px; border: none; font-weight: 800; cursor: pointer; }
         .nav-bar { position: fixed; bottom: 0; width: 100%; background: #010409; border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 15px; }
-        .nav-item { color: #fff; text-decoration: none; font-size: 0.6rem; opacity: 0.5; text-align: center; }
+        .nav-item { color: #fff; text-decoration: none; font-size: 0.65rem; opacity: 0.5; text-align: center; }
     </style>
 </head>
 <body>
-
-    <header>
-        <div class="badge">🛡️ ESCROW ACTIVE</div>
-        <h1 style="margin-top: 10px; font-size: 1.5rem; letter-spacing: -1px;">BUSD P2P MARKET</h1>
-    </header>
-
-    <div class="invest-promo" onclick="alert('Offer Active: Connect with Viju Bhai to claim 2% Bonus!')">
-        <p>LIMITED TIME OFFER 🔥</p>
-        <h2>INVEST NOW & GET 2% EXTRA COIN</h2>
-        <p style="font-size: 0.65rem; margin-top: 5px;">*Bonus coins credited instantly on staking.</p>
+    <div class="invest-promo" onclick="alert('Contact Viju Bhai for 2% Bonus!')">
+        <p style="font-size:0.7rem;">OFFER ACTIVE</p>
+        <h2>INVEST NOW & GET 2% EXTRA</h2>
     </div>
-
-    <div class="ad-toggle" onclick="toggleAdForm()">
-        <span style="color: var(--primary); font-weight: 800;">➕ POST MY SELL AD (Merchant)</span>
-    </div>
-
-    <div id="adForm">
-        <h3 style="margin-bottom: 20px; color: var(--primary);">Create P2P Sell Ad</h3>
-        <div class="input-group">
-            <label>SELL AMOUNT (BUSD)</label>
-            <input type="number" placeholder="e.g. 10000">
-        </div>
-        <div class="input-group">
-            <label>PRICE PER BUSD (INR)</label>
-            <input type="number" value="0.90" step="0.01">
-        </div>
-        <div class="input-group">
-            <label>MINIMUM BUY LIMIT</label>
-            <input type="number" placeholder="e.g. 1000">
-        </div>
-        <button class="buy-btn" onclick="alert('Ad Published! Waiting for Viju Bhai to approve.')" style="background: var(--gold);">PUBLISH LIVE AD</button>
-    </div>
-
+    <div style="padding:0 20px; font-weight:800; color:var(--primary);">LIVE P2P ADS</div>
     <div class="p2p-card">
-        <div class="merchant-row">
-            <div class="m-avatar">M</div>
-            <div>
-                <h4 style="font-size: 0.85rem;">Verified Merchant_#101</h4>
-                <p style="font-size: 0.6rem; opacity: 0.5;">✅ 245 Trades | 100% Completion</p>
-            </div>
-        </div>
-        <div class="price-row">
-            <div>
-                <p style="font-size: 0.65rem; opacity: 0.5;">Available</p>
-                <p style="font-weight: 700;">25,000 BUSD</p>
-            </div>
-            <div style="text-align: right;">
-                <p style="font-size: 0.65rem; opacity: 0.5;">Price</p>
-                <p class="price-tag">₹0.90</p>
-            </div>
-        </div>
-        <div style="display: flex; gap: 8px; margin-bottom: 15px;">
-            <span style="background: rgba(255,215,0,0.1); color: var(--gold); padding: 4px 8px; border-radius: 5px; font-size: 0.6rem;">UPI</span>
-            <span style="background: rgba(0,255,136,0.1); color: var(--primary); padding: 4px 8px; border-radius: 5px; font-size: 0.6rem;">BANK TRANSFER</span>
-        </div>
-        <button class="buy-btn" onclick="alert('Trade Initiated! Opening Secure Chat...')">BUY BUSD</button>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;"><b>Merchant_#101 ✅</b> <b style="color:var(--primary);">₹0.90</b></div>
+        <button class="buy-btn" onclick="alert('Trade Initiated!')">BUY BUSD</button>
     </div>
-
     <nav class="nav-bar">
         <a href="index.html" class="nav-item">🏠<br>Home</a>
-        <a href="p2p.html" class="nav-item" style="opacity: 1; color: var(--primary);">🔄<br>P2P Market</a>
-        <a href="#" class="nav-item" onclick="alert('Coming Soon')">📊<br>Trade</a>
-        <a href="#" class="nav-item" onclick="alert('Coming Soon')">👤<br>Account</a>
+        <a href="p2p.html" class="nav-item" style="opacity:1; color:var(--primary);">🔄<br>P2P Market</a>
+        <a href="explorer.html" class="nav-item">🔍<br>Explorer</a>
     </nav>
-
-    <script>
-        function toggleAdForm() {
-            var x = document.getElementById("adForm");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-                window.scrollTo(0, x.offsetTop - 50);
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
-
 </body>
 </html>
