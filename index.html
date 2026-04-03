@@ -3,38 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUSD | Official Protocol</title>
+    <title>BUSD | Official Asset Protocol</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #00ff88; --bg: #010409; --border: rgba(255,255,255,0.1); }
+        :root { --primary: #00ff88; --bg: #010409; --border: rgba(255,255,255,0.1); --gold: #FFD700; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background: var(--bg); color: #fff; text-align: center; padding-bottom: 80px; background-image: radial-gradient(circle at top, #002213 0%, #010409 60%); }
-        .middle-logo { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 18rem; font-weight: 800; color: rgba(0, 255, 136, 0.02); z-index: -1; }
-        nav { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(1,4,9,0.9); backdrop-filter: blur(10px); position: sticky; top: 0; border-bottom: 1px solid var(--border); }
-        .hero { padding: 100px 20px; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .btn-main { background: var(--primary); color: #000; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-decoration: none; display: inline-block; margin-top: 20px; }
-        .nav-bar { position: fixed; bottom: 0; width: 100%; background: #010409; border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 15px; z-index: 1000; }
-        .nav-item { color: #fff; text-decoration: none; font-size: 0.65rem; opacity: 0.5; text-align: center; }
-        .nav-item.active { opacity: 1; color: var(--primary); font-weight: 700; }
+        body { background: var(--bg); color: #fff; text-align: center; padding-bottom: 100px; background-image: radial-gradient(circle at top, #002213 0%, #010409 60%); min-height: 100vh; }
+        
+        /* Navbar */
+        nav { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(1,4,9,0.9); backdrop-filter: blur(10px); position: sticky; top: 0; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .logo-text { font-weight: 800; color: var(--primary); font-size: 1.2rem; }
+        
+        /* Sections */
+        .page-content { display: block; padding: 20px; animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Buttons & Cards */
+        .btn-main { background: var(--primary); color: #000; padding: 15px 30px; border-radius: 50px; font-weight: 800; text-decoration: none; display: inline-block; margin-top: 20px; border: none; width: 100%; cursor: pointer; }
+        .invest-promo { margin: 15px 0; background: linear-gradient(135deg, #FFD700 0%, #ffae00 100%); padding: 20px; border-radius: 20px; color: #000; font-weight: 800; cursor: pointer; }
+        .p2p-card { background: rgba(255,255,255,0.03); margin: 15px 0; padding: 20px; border-radius: 20px; border: 1px solid var(--border); text-align: left; }
+        .stat-box { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; border: 1px solid var(--border); margin-bottom: 15px; text-align: left; }
+
+        /* Bottom Nav */
+        .nav-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #010409; border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 15px; z-index: 1000; }
+        .nav-item { color: #fff; text-decoration: none; font-size: 0.7rem; opacity: 0.5; text-align: center; border: none; background: none; cursor: pointer; }
+        .nav-item.active { opacity: 1; color: var(--primary); font-weight: 800; }
+
+        /* Hidden Post Ad Form */
+        #adForm { display: none; background: #0a1f1a; padding: 20px; border-radius: 15px; border: 1px solid var(--primary); margin-top: 15px; }
+        input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #333; background: #000; color: #fff; }
     </style>
 </head>
 <body>
-    <div class="middle-logo">BUSD</div>
+
     <nav>
-        <div style="font-weight:800; color:var(--primary);"><img src="logo.png" style="width:25px; border-radius:50%; vertical-align:middle;"> BUSD</div>
-        <a href="p2p.html" style="color:var(--primary); text-decoration:none; font-size:0.8rem; font-weight:800;">JOIN P2P</a>
+        <div class="logo-text">BUSD</div>
+        <div style="font-size: 0.7rem; opacity: 0.6;">BY BUSD TEAM</div>
     </nav>
-    <section class="hero">
-        <div style="background:rgba(0,255,136,0.1); padding:8px 20px; border-radius:50px; font-size:0.8rem; color:var(--primary); margin-bottom:20px;">LIVE PRICE: ₹0.90 (+0.12%)</div>
-        <h1>The Next-Gen <br>Asset Protocol</h1>
-        <p style="opacity:0.6; max-width:300px;">Secure Institutional Digital Asset on Arbitrum Layer-2.</p>
-        <a href="p2p.html" class="btn-main">GET STARTED</a>
-    </section>
-    <nav class="nav-bar">
-        <a href="index.html" class="nav-item active">🏠<br>Home</a>
-        <a href="p2p.html" class="nav-item">🔄<br>P2P Market</a>
-        <a href="explorer.html" class="nav-item">🔍<br>Explorer</a>
-    </nav>
+
+    <div id="homePage" class="page-content">
+        <div style="background:rgba(0,255,136,0.1); padding:8px 20px; border-radius:50px; font-size:0.8rem; color:var(--primary); margin-bottom:20px; display:inline-block;">LIVE PRICE: ₹0.90</div>
+        <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 10px;">The Next-Gen <br>Asset Protocol</h1>
+        <p style="opacity:0.6; font-size:0.9rem;">Official Digital Asset on Arbitrum Layer-2 Security.</p>
+        <button class="btn-main" onclick="showPage('p2pPage')">GET STARTED / JOIN P2P</button>
+        <div style="margin-top: 40px; opacity: 0.2; font-size: 10rem; font-weight: 900; position: absolute; left: 50%; transform: translateX(-50%); z-index: -1;">BUSD</div>
+    </div>
+
+    <div id="p2pPage" class="page-content" style="display: none;">
+        <div class="invest-promo" onclick="alert('Contact BUSD TEAM to claim 2% Bonus!')">
+            <p style="font-size:0.7rem;">LIMITED OFFER</p>
+            <h2 style="font-size: 1.1rem;">INVEST NOW & GET 2% EXTRA</h2>
+        </div>
+        
+        <button onclick="toggleAdForm()" style="color: var(--primary); background: none; border: 1px dashed var(--primary); width: 100%; padding: 15px; border-radius: 15px; font-weight: 800; margin-bottom: 15px;">➕ POST MY SELL AD</button>
+        
+        <div id="adForm">
+            <input type="number" placeholder="Amount of BUSD to sell">
+            <input type="number" placeholder="Your Price (e.g. 0.90)">
+            <button class="btn-main" style="margin-top:0;" onclick="alert('Ad Submitted for Team Approval!')">PUBLISH AD</button>
+        </div>
+
+        <div class="p2p-card">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <b>BUSD_OFFICIAL ✅</b>
+                <b style="color:var(--primary); font-size: 1.3rem;">₹0.90</b>
+            </div>
+            <p style="font-size:0.8rem; opacity:0.6; margin: 10px 0;">Available: 1,000,000 BUSD</p>
+            <button class="btn-main" style="margin-top:0;" onclick="alert('Connecting to BUSD TEAM Secure Chat...')">BUY BUSD</button>
+        </div>
+    </div>
+
+    <div id="explorerPage" class="page-content" style="display: none;">
+        <h1 style="color:var(--primary); margin-bottom:20px; font-size:1.5rem;">BUSD SCAN 🔍</h1>
+        <div class="stat-box">
+            <p style="opacity:0.5; font-size:0.7rem;">TOTAL BURNED</p>
+            <h2 style="color:#ff4d4d;">0 BUSD 🔥</h2>
+        </div>
+        <div class="stat-box">
+            <p style="opacity:0.5; font-size:0.7rem;">CIRCULATING SUPPLY</p>
+            <h2>1,000,000,000 BUSD</h2>
+        </div>
+        <div style="text-align: left; padding: 10px;">
+            <p style="font-size: 0.8rem; font-weight: 800;">Recent Transactions</p>
+            <div style="background:rgba(255,255,255,0.02); padding:15px; border-radius:10px; font-size:0.7rem; margin-top:10px; border:1px solid var(--border);">
+                Hash: 0x000...000 <br> Status: <span style="color:var(--primary)">WAITING FOR GENESIS...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-bar">
+        <button id="nav-home" class="nav-item active" onclick="showPage('homePage')">🏠<br>Home</button>
+        <button id="nav-p2p" class="nav-item" onclick="showPage('p2pPage')">🔄<br>P2P Market</button>
+        <button id="nav-explorer" class="nav-item" onclick="showPage('explorerPage')">🔍<br>Explorer</button>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(p => p.style.display = 'none');
+            // Show selected page
+            document.getElementById(pageId).style.display = 'block';
+            
+            // Update Nav Active State
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            if(pageId === 'homePage') document.getElementById('nav-home').classList.add('active');
+            if(pageId === 'p2pPage') document.getElementById('nav-p2p').classList.add('active');
+            if(pageId === 'explorerPage') document.getElementById('nav-explorer').classList.add('active');
+        }
+
+        function toggleAdForm() {
+            var f = document.getElementById('adForm');
+            f.style.display = (f.style.display === 'none' || f.style.display === '') ? 'block' : 'none';
+        }
+    </script>
 </body>
 </html>
