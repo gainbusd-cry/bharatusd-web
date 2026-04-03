@@ -3,146 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUSD Secure P2P Escrow</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>BUSD | Institutional P2P Market</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --emerald: #00ff88; --deep-green: #0a1f1a; --soft-green: #14362d; --gold: #FFD700; --red: #ff4d4d; --white: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: var(--deep-green); color: var(--white); padding: 15px; }
-        .container { max-width: 500px; margin: 0 auto; }
+        :root { --primary: #00ff88; --gold: #FFD700; --bg: #010409; --card: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.08); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg); color: #fff; padding-bottom: 50px; }
+
+        /* Header Area */
+        header { padding: 30px 20px; background: linear-gradient(180deg, #0a1f1a 0%, #010409 100%); border-bottom: 1px solid var(--border); }
+        .badge { background: rgba(0, 255, 136, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; border: 1px solid var(--primary); }
+
+        /* 🚀 SPECIAL OFFER BUTTON (Viju Bhai Special) */
+        .invest-promo {
+            margin: 20px; background: linear-gradient(135deg, #FFD700 0%, #ffae00 100%);
+            padding: 20px; border-radius: 20px; text-align: center; color: #000;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2); cursor: pointer; transition: 0.3s;
+        }
+        .invest-promo:active { transform: scale(0.95); }
+        .invest-promo h2 { font-size: 1.2rem; font-weight: 800; }
+        .invest-promo p { font-size: 0.8rem; font-weight: 700; opacity: 0.8; }
+
+        /* ➕ POST AD SECTION */
+        .ad-toggle {
+            margin: 0 20px 20px; background: var(--card); border: 1px dashed var(--primary);
+            padding: 15px; border-radius: 15px; text-align: center; cursor: pointer;
+        }
+        #adForm { 
+            display: none; background: #0a1f1a; margin: 0 20px 20px; padding: 25px; 
+            border-radius: 20px; border: 1px solid var(--primary); 
+        }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 0.7rem; opacity: 0.6; margin-bottom: 5px; }
+        .input-group input { 
+            width: 100%; background: #050f0c; border: 1px solid var(--border); 
+            padding: 12px; border-radius: 10px; color: #fff; outline: none;
+        }
+
+        /* P2P AD CARDS */
+        .p2p-card { 
+            background: var(--card); margin: 0 20px 15px; padding: 20px; 
+            border-radius: 20px; border: 1px solid var(--border); 
+        }
+        .merchant-row { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .m-avatar { width: 35px; height: 35px; background: var(--primary); border-radius: 50%; color: #000; display: flex; align-items: center; justify-content: center; font-weight: 800; }
         
-        /* Header */
-        header { text-align: center; margin-bottom: 25px; }
-        .badge { background: rgba(0, 255, 136, 0.1); color: var(--emerald); padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; border: 1px solid var(--emerald); display: inline-block; }
-
-        /* P2P Ad Card */
-        .ad-card { background: var(--soft-green); border-radius: 20px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); }
-        .seller-row { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
-        .avatar { width: 45px; height: 45px; background: var(--emerald); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-weight: 800; }
+        .price-row { display: flex; justify-content: space-between; align-items: flex-end; margin: 15px 0; }
+        .price-tag { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
         
-        .price-section { display: flex; justify-content: space-between; align-items: flex-end; margin: 15px 0; }
-        .price { font-size: 1.8rem; color: var(--emerald); font-weight: 700; line-height: 1; }
-        
-        .pay-methods { display: flex; gap: 8px; margin-top: 10px; }
-        .method-tag { font-size: 0.65rem; background: rgba(255,215,0,0.1); color: var(--gold); padding: 4px 10px; border-radius: 6px; border: 1px solid var(--gold); }
+        .buy-btn { 
+            width: 100%; background: var(--primary); color: #000; padding: 14px; 
+            border-radius: 12px; border: none; font-weight: 800; font-size: 0.9rem; cursor: pointer;
+        }
 
-        .btn-buy { display: block; width: 100%; background: var(--emerald); color: #0a1f1a; text-align: center; padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 800; border: none; cursor: pointer; font-size: 1rem; }
-
-        /* 💬 CHAT & ESCROW MODAL 💬 */
-        #chatModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; z-index: 2000; flex-direction: column; }
-        .chat-container { width: 100%; max-width: 500px; height: 100%; background: var(--soft-green); margin: 0 auto; display: flex; flex-direction: column; }
-        .chat-header { background: #1a4a3d; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,255,136,0.2); }
-        
-        .escrow-alert { background: rgba(255, 215, 0, 0.1); color: var(--gold); padding: 10px; font-size: 0.75rem; text-align: center; border-bottom: 1px solid var(--gold); }
-
-        .chat-body { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
-        .msg { max-width: 85%; padding: 12px 15px; border-radius: 15px; font-size: 0.85rem; line-height: 1.4; }
-        .msg-in { background: #0a1f1a; align-self: flex-start; border-bottom-left-radius: 2px; }
-        .msg-out { background: var(--emerald); color: #000; align-self: flex-end; border-bottom-right-radius: 2px; }
-
-        /* Trade Action Buttons */
-        .trade-footer { background: #0a1f1a; padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .action-btns { display: flex; gap: 10px; margin-bottom: 10px; }
-        .btn-action { flex: 1; padding: 10px; border-radius: 8px; border: none; font-weight: 700; font-size: 0.75rem; cursor: pointer; }
-        .btn-paid { background: var(--gold); color: #000; }
-        .btn-release { background: var(--emerald); color: #000; }
-        .btn-dispute { background: var(--red); color: #fff; width: 100%; margin-top: 10px; font-size: 0.7rem; }
-
-        .chat-input-area { display: flex; gap: 10px; }
-        .chat-input-area input { flex: 1; background: #14362d; border: 1px solid rgba(0,255,136,0.2); padding: 12px; border-radius: 8px; color: white; outline: none; font-size: 0.9rem; }
+        /* Bottom Nav */
+        .nav-bar { position: fixed; bottom: 0; width: 100%; background: #010409; border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 15px; }
+        .nav-item { color: #fff; text-decoration: none; font-size: 0.6rem; opacity: 0.5; text-align: center; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="badge">🛡️ ADMIN ESCROW ACTIVE</div>
-            <h2 style="margin-top: 10px; color: var(--emerald);">BUSD P2P MARKET</h2>
-        </header>
+    <header>
+        <div class="badge">🛡️ ESCROW ACTIVE</div>
+        <h1 style="margin-top: 10px; font-size: 1.5rem; letter-spacing: -1px;">BUSD P2P MARKET</h1>
+    </header>
 
-        <div class="ad-card">
-            <div class="seller-row">
-                <div class="avatar">M</div>
-                <div>
-                    <h4 style="margin:0; font-size: 0.9rem;">Verified Merchant_#742</h4>
-                    <p style="font-size: 0.65rem; color: var(--emerald);">● Online | 124 Trades Done</p>
-                </div>
-            </div>
-
-            <div class="price-section">
-                <div>
-                    <p style="font-size: 0.7rem; opacity: 0.6;">Amount Available</p>
-                    <p style="font-size: 1.1rem; font-weight: 600;">10,000 BUSD</p>
-                </div>
-                <div style="text-align: right;">
-                    <span class="price">₹1.10</span>
-                </div>
-            </div>
-
-            <div class="pay-methods">
-                <span class="method-tag">UPI (GPay/PhonePe)</span>
-                <span class="method-tag">IMPS / Bank Transfer</span>
-            </div>
-
-            <button onclick="openChat()" class="btn-buy">BUY BUSD (CHAT & PAY)</button>
-        </div>
+    <div class="invest-promo" onclick="alert('Offer Active: Connect with Viju Bhai to claim 2% Bonus!')">
+        <p>LIMITED TIME OFFER 🔥</p>
+        <h2>INVEST NOW & GET 2% EXTRA COIN</h2>
+        <p style="font-size: 0.65rem; margin-top: 5px;">*Bonus coins credited instantly on staking.</p>
     </div>
 
-    <div id="chatModal">
-        <div class="chat-container">
-            <div class="chat-header">
-                <div style="display:flex; align-items:center; gap:10px;">
-                    <div style="width:30px; height:30px; background:var(--emerald); border-radius:50%; text-align:center; color:#000; font-weight:700; line-height:30px;">M</div>
-                    <span style="font-size: 0.9rem;">Trade with Merchant_#742</span>
-                </div>
-                <span onclick="closeChat()" style="cursor:pointer; font-size: 1.5rem;">&times;</span>
-            </div>
+    <div class="ad-toggle" onclick="toggleAdForm()">
+        <span style="color: var(--primary); font-weight: 800;">➕ POST MY SELL AD (Merchant)</span>
+    </div>
 
-            <div class="escrow-alert">
-                🔐 <b>ESCROW SECURED:</b> 10,000 BUSD are locked by System.
-            </div>
+    <div id="adForm">
+        <h3 style="margin-bottom: 20px; color: var(--primary);">Create P2P Sell Ad</h3>
+        <div class="input-group">
+            <label>SELL AMOUNT (BUSD)</label>
+            <input type="number" placeholder="e.g. 10000">
+        </div>
+        <div class="input-group">
+            <label>PRICE PER BUSD (INR)</label>
+            <input type="number" value="0.90" step="0.01">
+        </div>
+        <div class="input-group">
+            <label>MINIMUM BUY LIMIT</label>
+            <input type="number" placeholder="e.g. 1000">
+        </div>
+        <button class="buy-btn" onclick="alert('Ad Published! Waiting for Viju Bhai to approve.')" style="background: var(--gold);">PUBLISH LIVE AD</button>
+    </div>
 
-            <div class="chat-body" id="chatBody">
-                <div class="msg msg-in">
-                    <b>System:</b> Trade Started. Seller cannot withdraw tokens until trade ends or dispute is settled.
-                </div>
-                <div class="msg msg-in">
-                    <b>Merchant:</b> Hello! Please send ₹11,000 for 10,000 BUSD. After payment, click 'I HAVE PAID' and upload screenshot.
-                </div>
-            </div>
-
-            <div class="trade-footer">
-                <div class="action-btns">
-                    <button class="btn-action btn-paid" onclick="actionNotify('Buyer has marked as PAID! Check your account.')">I HAVE PAID</button>
-                    <button class="btn-action btn-release" onclick="actionNotify('Tokens Released to Buyer!')">RELEASE BUSD</button>
-                </div>
-                
-                <div class="chat-input-area">
-                    <input type="text" id="chatInput" placeholder="Message or UPI details...">
-                    <button style="background:var(--emerald); border:none; padding:10px; border-radius:8px; cursor:pointer;" onclick="sendMessage()">SEND</button>
-                </div>
-
-                <button class="btn-action btn-dispute" onclick="actionNotify('🚨 Dispute Raised! Admin will contact you on +919730698063.')">APPEAL / DISPUTE (HELP)</button>
+    <div class="p2p-card">
+        <div class="merchant-row">
+            <div class="m-avatar">M</div>
+            <div>
+                <h4 style="font-size: 0.85rem;">Verified Merchant_#101</h4>
+                <p style="font-size: 0.6rem; opacity: 0.5;">✅ 245 Trades | 100% Completion</p>
             </div>
         </div>
+        <div class="price-row">
+            <div>
+                <p style="font-size: 0.65rem; opacity: 0.5;">Available</p>
+                <p style="font-weight: 700;">25,000 BUSD</p>
+            </div>
+            <div style="text-align: right;">
+                <p style="font-size: 0.65rem; opacity: 0.5;">Price</p>
+                <p class="price-tag">₹0.90</p>
+            </div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+            <span style="background: rgba(255,215,0,0.1); color: var(--gold); padding: 4px 8px; border-radius: 5px; font-size: 0.6rem;">UPI</span>
+            <span style="background: rgba(0,255,136,0.1); color: var(--primary); padding: 4px 8px; border-radius: 5px; font-size: 0.6rem;">BANK TRANSFER</span>
+        </div>
+        <button class="buy-btn" onclick="alert('Trade Initiated! Opening Secure Chat...')">BUY BUSD</button>
     </div>
+
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-item">🏠<br>Home</a>
+        <a href="p2p.html" class="nav-item" style="opacity: 1; color: var(--primary);">🔄<br>P2P Market</a>
+        <a href="#" class="nav-item" onclick="alert('Coming Soon')">📊<br>Trade</a>
+        <a href="#" class="nav-item" onclick="alert('Coming Soon')">👤<br>Account</a>
+    </nav>
 
     <script>
-        function openChat() { document.getElementById('chatModal').style.display = 'flex'; }
-        function closeChat() { document.getElementById('chatModal').style.display = 'none'; }
-        
-        function actionNotify(msg) { alert("P2P System: " + msg); }
-
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const chatBody = document.getElementById('chatBody');
-            if(input.value.trim() !== "") {
-                const newMsg = document.createElement('div');
-                newMsg.className = 'msg msg-out';
-                newMsg.innerText = input.value;
-                chatBody.appendChild(newMsg);
-                chatBody.scrollTop = chatBody.scrollHeight;
-                input.value = "";
+        function toggleAdForm() {
+            var x = document.getElementById("adForm");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                window.scrollTo(0, x.offsetTop - 50);
+            } else {
+                x.style.display = "none";
             }
         }
     </script>
