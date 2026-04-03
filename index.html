@@ -3,117 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUSD | Official Asset Protocol</title>
+    <title>BUSD | Official Institutional Protocol</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #00ff88; --bg: #010409; --border: rgba(255,255,255,0.1); --gold: #FFD700; }
+        :root { --primary: #00ff88; --bg: #010409; --card: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.08); --gold: #FFD700; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background: var(--bg); color: #fff; text-align: center; padding-bottom: 100px; background-image: radial-gradient(circle at top, #002213 0%, #010409 60%); min-height: 100vh; }
+        body { background: var(--bg); color: #fff; padding-bottom: 100px; background-image: radial-gradient(circle at top, #002213 0%, #010409 60%); }
         
-        /* Navbar */
         nav { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(1,4,9,0.9); backdrop-filter: blur(10px); position: sticky; top: 0; border-bottom: 1px solid var(--border); z-index: 1000; }
-        .logo-text { font-weight: 800; color: var(--primary); font-size: 1.2rem; }
-        
-        /* Sections */
-        .page-content { display: block; padding: 20px; animation: fadeIn 0.5s ease-in; }
+        .page { display: none; padding: 20px; animation: fadeIn 0.4s; }
+        .active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Buttons & Cards */
-        .btn-main { background: var(--primary); color: #000; padding: 15px 30px; border-radius: 50px; font-weight: 800; text-decoration: none; display: inline-block; margin-top: 20px; border: none; width: 100%; cursor: pointer; }
-        .invest-promo { margin: 15px 0; background: linear-gradient(135deg, #FFD700 0%, #ffae00 100%); padding: 20px; border-radius: 20px; color: #000; font-weight: 800; cursor: pointer; }
-        .p2p-card { background: rgba(255,255,255,0.03); margin: 15px 0; padding: 20px; border-radius: 20px; border: 1px solid var(--border); text-align: left; }
-        .stat-box { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; border: 1px solid var(--border); margin-bottom: 15px; text-align: left; }
+        /* UI Components */
+        .card { background: var(--card); border: 1px solid var(--border); padding: 20px; border-radius: 20px; margin-bottom: 20px; }
+        .btn-buy { background: var(--primary); color: #000; padding: 15px; border-radius: 12px; border: none; font-weight: 800; width: 100%; cursor: pointer; font-size: 1rem; }
+        input { width: 100%; padding: 14px; margin: 10px 0; border-radius: 10px; border: 1px solid #333; background: #000; color: #fff; font-size: 0.9rem; }
+        .qr-box { background: #fff; padding: 15px; border-radius: 15px; width: 180px; margin: 15px auto; }
+        
+        /* Tokenomics Table */
+        .t-table { width: 100%; margin-top: 10px; border-collapse: collapse; }
+        .t-table td { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+        .label { opacity: 0.6; }
+        .value { text-align: right; font-weight: 700; color: var(--primary); }
 
-        /* Bottom Nav */
-        .nav-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #010409; border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 15px; z-index: 1000; }
-        .nav-item { color: #fff; text-decoration: none; font-size: 0.7rem; opacity: 0.5; text-align: center; border: none; background: none; cursor: pointer; }
-        .nav-item.active { opacity: 1; color: var(--primary); font-weight: 800; }
-
-        /* Hidden Post Ad Form */
-        #adForm { display: none; background: #0a1f1a; padding: 20px; border-radius: 15px; border: 1px solid var(--primary); margin-top: 15px; }
-        input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #333; background: #000; color: #fff; }
+        /* Nav Bar */
+        .nav-bar { position: fixed; bottom: 0; width: 100%; background: #010409; border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 15px; }
+        .nav-item { color: #fff; text-decoration: none; font-size: 0.7rem; opacity: 0.4; text-align: center; background: none; border: none; cursor: pointer; }
+        .nav-item.on { opacity: 1; color: var(--primary); font-weight: 800; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-text">BUSD</div>
-        <div style="font-size: 0.7rem; opacity: 0.6;">BY BUSD TEAM</div>
+        <div style="display:flex; align-items:center; gap:8px;">
+            <img src="logo.png" style="width:30px; border-radius:50%;" onerror="this.style.display='none'">
+            <span style="font-weight:800; color:var(--primary);">BUSD PROTOCOL</span>
+        </div>
+        <div style="font-size:0.6rem; opacity:0.5;">OFFICIAL BUSD TEAM</div>
     </nav>
 
-    <div id="homePage" class="page-content">
-        <div style="background:rgba(0,255,136,0.1); padding:8px 20px; border-radius:50px; font-size:0.8rem; color:var(--primary); margin-bottom:20px; display:inline-block;">LIVE PRICE: ₹0.90</div>
-        <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 10px;">The Next-Gen <br>Asset Protocol</h1>
-        <p style="opacity:0.6; font-size:0.9rem;">Official Digital Asset on Arbitrum Layer-2 Security.</p>
-        <button class="btn-main" onclick="showPage('p2pPage')">GET STARTED / JOIN P2P</button>
-        <div style="margin-top: 40px; opacity: 0.2; font-size: 10rem; font-weight: 900; position: absolute; left: 50%; transform: translateX(-50%); z-index: -1;">BUSD</div>
+    <div id="home" class="page active">
+        <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Institutional <br>Utility Asset</h1>
+        <p style="opacity:0.6; font-size:0.9rem; margin-bottom:25px;">BUSD is a high-speed digital asset built on Arbitrum for merchant settlements and global payments.</p>
+        
+        <div class="card">
+            <h3 style="color:var(--primary); margin-bottom:15px;">Tokenomics</h3>
+            <table class="t-table">
+                <tr><td class="label">Total Supply</td><td class="value">1,000,000,000 BUSD</td></tr>
+                <tr><td class="label">Network</td><td class="value">Arbitrum (L2)</td></tr>
+                <tr><td class="label">Protocol</td><td class="value">ERC-20 Security</td></tr>
+                <tr><td class="label">Buy Rate</td><td class="value">₹0.90 / BUSD</td></tr>
+                <tr><td class="label">Spend Value</td><td class="value">₹0.80 / Merchant</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3 style="margin-bottom:10px;">Why BUSD?</h3>
+            <p style="font-size:0.8rem; opacity:0.7; line-height:1.6;">
+                • **Low Fees:** Gas cost less than ₹1.<br>
+                • **Instant:** 2-second transaction finality.<br>
+                • **Deflationary:** ₹0.10 from every spend is burned to increase value.
+            </p>
+        </div>
     </div>
 
-    <div id="p2pPage" class="page-content" style="display: none;">
-        <div class="invest-promo" onclick="alert('Contact BUSD TEAM to claim 2% Bonus!')">
-            <p style="font-size:0.7rem;">LIMITED OFFER</p>
-            <h2 style="font-size: 1.1rem;">INVEST NOW & GET 2% EXTRA</h2>
-        </div>
+    <div id="p2p" class="page">
+        <h2 style="margin-bottom:20px;">Buy BUSD Instantly</h2>
         
-        <button onclick="toggleAdForm()" style="color: var(--primary); background: none; border: 1px dashed var(--primary); width: 100%; padding: 15px; border-radius: 15px; font-weight: 800; margin-bottom: 15px;">➕ POST MY SELL AD</button>
-        
-        <div id="adForm">
-            <input type="number" placeholder="Amount of BUSD to sell">
-            <input type="number" placeholder="Your Price (e.g. 0.90)">
-            <button class="btn-main" style="margin-top:0;" onclick="alert('Ad Submitted for Team Approval!')">PUBLISH AD</button>
+        <div class="card" id="step1">
+            <p style="font-size:0.8rem; margin-bottom:5px;">Step 1: Enter Recipient Wallet</p>
+            <input type="text" id="wallet" placeholder="Paste your Arbitrum Wallet Address">
+            <input type="number" id="amount" placeholder="Enter INR Amount (Min ₹1000)" oninput="updateCoins()">
+            <p style="font-size:0.75rem; color:var(--primary);">You will receive: <span id="coinCount">0</span> BUSD</p>
+            <button class="btn-buy" style="margin-top:15px;" onclick="goToPayment()">PROCEED TO PAYMENT</button>
         </div>
 
-        <div class="p2p-card">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <b>BUSD_OFFICIAL ✅</b>
-                <b style="color:var(--primary); font-size: 1.3rem;">₹0.90</b>
+        <div class="card" id="step2" style="display:none;">
+            <p style="text-align:center; font-size:0.9rem; margin-bottom:10px;">Step 2: Pay via UPI QR</p>
+            <div class="qr-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=YOURUPI@ID&pn=BUSDTEAM&am=1000" style="width:100%;">
             </div>
-            <p style="font-size:0.8rem; opacity:0.6; margin: 10px 0;">Available: 1,000,000 BUSD</p>
-            <button class="btn-main" style="margin-top:0;" onclick="alert('Connecting to BUSD TEAM Secure Chat...')">BUY BUSD</button>
+            <p style="text-align:center; font-size:0.7rem; opacity:0.6;">Pay the exact INR amount to the QR above.</p>
+            
+            <div style="margin-top:20px;">
+                <p style="font-size:0.8rem;">Step 3: Submit Transaction Details</p>
+                <input type="text" id="utr" placeholder="Enter 12-digit UTR / Ref Number">
+                <button class="btn-buy" style="background:var(--gold);" onclick="submitOrder()">VERIFY & COMPLETE</button>
+            </div>
         </div>
     </div>
 
-    <div id="explorerPage" class="page-content" style="display: none;">
-        <h1 style="color:var(--primary); margin-bottom:20px; font-size:1.5rem;">BUSD SCAN 🔍</h1>
-        <div class="stat-box">
+    <div id="explorer" class="page">
+        <h2>Network Scan</h2>
+        <div class="card" style="margin-top:20px;">
+            <p style="opacity:0.5; font-size:0.7rem;">LIVE GENESIS STATUS</p>
+            <h3 style="color:var(--primary);">Awaiting first P2P Batch...</h3>
+        </div>
+        <div class="card">
             <p style="opacity:0.5; font-size:0.7rem;">TOTAL BURNED</p>
-            <h2 style="color:#ff4d4d;">0 BUSD 🔥</h2>
-        </div>
-        <div class="stat-box">
-            <p style="opacity:0.5; font-size:0.7rem;">CIRCULATING SUPPLY</p>
-            <h2>1,000,000,000 BUSD</h2>
-        </div>
-        <div style="text-align: left; padding: 10px;">
-            <p style="font-size: 0.8rem; font-weight: 800;">Recent Transactions</p>
-            <div style="background:rgba(255,255,255,0.02); padding:15px; border-radius:10px; font-size:0.7rem; margin-top:10px; border:1px solid var(--border);">
-                Hash: 0x000...000 <br> Status: <span style="color:var(--primary)">WAITING FOR GENESIS...</span>
-            </div>
+            <h2 style="color:#ff4d4d;">0.00 BUSD 🔥</h2>
         </div>
     </div>
 
-    <div class="nav-bar">
-        <button id="nav-home" class="nav-item active" onclick="showPage('homePage')">🏠<br>Home</button>
-        <button id="nav-p2p" class="nav-item" onclick="showPage('p2pPage')">🔄<br>P2P Market</button>
-        <button id="nav-explorer" class="nav-item" onclick="showPage('explorerPage')">🔍<br>Explorer</button>
-    </div>
+    <nav class="nav-bar">
+        <button class="nav-item on" id="n-home" onclick="tab('home')">🏠<br>Info</button>
+        <button class="nav-item" id="n-p2p" onclick="tab('p2p')">🔄<br>Buy BUSD</button>
+        <button class="nav-item" id="n-explorer" onclick="tab('explorer')">🔍<br>Scanner</button>
+    </nav>
 
     <script>
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page-content').forEach(p => p.style.display = 'none');
-            // Show selected page
-            document.getElementById(pageId).style.display = 'block';
-            
-            // Update Nav Active State
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            if(pageId === 'homePage') document.getElementById('nav-home').classList.add('active');
-            if(pageId === 'p2pPage') document.getElementById('nav-p2p').classList.add('active');
-            if(pageId === 'explorerPage') document.getElementById('nav-explorer').classList.add('active');
+        function tab(t) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(t).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('on'));
+            document.getElementById('n-'+t).classList.add('on');
         }
 
-        function toggleAdForm() {
-            var f = document.getElementById('adForm');
-            f.style.display = (f.style.display === 'none' || f.style.display === '') ? 'block' : 'none';
+        function updateCoins() {
+            let inr = document.getElementById('amount').value;
+            let coins = inr / 0.90;
+            document.getElementById('coinCount').innerText = Math.floor(coins);
+        }
+
+        function goToPayment() {
+            let w = document.getElementById('wallet').value;
+            if(w.length < 10) { alert('Invalid Wallet Address'); return; }
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+        }
+
+        function submitOrder() {
+            let utr = document.getElementById('utr').value;
+            if(utr.length < 6) { alert('Enter valid UTR number'); return; }
+            alert('ORDER RECEIVED! BUSD Team is verifying your UTR: ' + utr + '. Tokens will be sent to your wallet within 15-30 mins.');
+            location.reload();
         }
     </script>
 </body>
