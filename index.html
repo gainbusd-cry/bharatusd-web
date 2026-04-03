@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BUSD | Institutional Asset Protocol</title>
+    <title>BUSD | Official Institutional Protocol</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #00ff88; --bg: #010409; --card: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.08); --gold: #FFD700; }
@@ -19,7 +19,7 @@
         .spec-table { width: 100%; border-collapse: collapse; }
         .spec-table td { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
         .val { text-align: right; font-weight: 700; color: var(--primary); }
-        .qr-placeholder { background: #fff; padding: 15px; border-radius: 15px; width: 180px; margin: 20px auto; }
+        .qr-placeholder { background: #fff; padding: 15px; border-radius: 15px; width: 200px; margin: 20px auto; border: 2px solid var(--primary); }
         .footer-tabs { position: fixed; bottom: 0; left: 0; width: 100%; background: #010409; border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 15px 0; z-index: 1000; }
         .tab-btn { background: none; border: none; color: #fff; font-size: 0.7rem; opacity: 0.4; text-align: center; cursor: pointer; flex: 1; outline: none; }
         .tab-btn.active { opacity: 1; color: var(--primary); font-weight: 800; }
@@ -27,16 +27,20 @@
 </head>
 <body>
     <nav>
-        <div style="font-weight:800; color:var(--primary);">BUSD PROTOCOL</div>
-        <div style="font-size: 0.6rem; opacity: 0.5;">BY BUSD TEAM</div>
+        <div style="font-weight:800; color:var(--primary); display:flex; align-items:center; gap:8px;">
+            <img src="logo.png" style="width:25px; border-radius:50%;" onerror="this.style.display='none'">
+            BUSD PROTOCOL
+        </div>
+        <div style="font-size: 0.6rem; opacity: 0.5; font-weight: 700;">BY BUSD TEAM</div>
     </nav>
 
     <main id="home-page" class="page-section active">
         <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px;">Institutional <br>Asset Gateway</h1>
         <div class="card">
-            <h3 style="color: var(--primary); font-size: 0.9rem; margin-bottom: 15px;">TOKENOMICS & SPECS</h3>
+            <h3 style="color: var(--primary); font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase;">Tokenomics & Specs</h3>
             <table class="spec-table">
                 <tr><td style="opacity:0.5;">Total Supply</td><td class="val">1,000,000,000 BUSD</td></tr>
+                <tr><td style="opacity:0.5;">Network</td><td class="val">Arbitrum One (L2)</td></tr>
                 <tr><td style="opacity:0.5;">Buy Rate</td><td class="val">₹0.90 / BUSD</td></tr>
                 <tr><td style="opacity:0.5;">Burn System</td><td class="val">₹0.10 Per Transaction</td></tr>
             </table>
@@ -52,16 +56,22 @@
             <p style="font-size: 0.85rem; font-weight: 700; color: var(--primary); margin: 10px 0;">Receive: <span id="coin-res">0</span> BUSD</p>
             <button class="btn-action" onclick="showPayment()">NEXT: PAY VIA UPI</button>
         </div>
+
         <div id="step-2" class="card" style="display: none; text-align: center;">
-            <div class="qr-placeholder"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=YOUR_UPI@ID" style="width:100%;"></div>
+            <h3 style="margin-bottom: 10px;">2. Scan & Pay</h3>
+            <div class="qr-placeholder">
+                <img id="upi-qr" src="" style="width:100%; height:auto;" alt="Payment QR">
+            </div>
+            <p style="font-size: 0.8rem; font-weight: 800; color: var(--gold); margin-bottom: 15px;">UPI: Bharatbusd@postbank</p>
             <input type="text" id="utr-number" placeholder="Enter 12-Digit UTR Number">
             <button class="btn-action" style="background: var(--gold);" onclick="finishOrder()">SUBMIT FOR VERIFICATION</button>
+            <button style="background:none; border:none; color:#fff; opacity:0.5; margin-top:15px;" onclick="location.reload()">← Back</button>
         </div>
     </main>
 
     <main id="scan-page" class="page-section">
         <h2 style="color: var(--primary); margin-bottom: 20px;">Protocol Scanner</h2>
-        <div class="card"><p style="opacity: 0.5; font-size: 0.7rem;">BURNED</p><h1 style="color: #ff4d4d;">0.00 BUSD 🔥</h1></div>
+        <div class="card"><p style="opacity: 0.5; font-size: 0.7rem;">BURNED</p><h1 style="color: #ff4d4d; font-size: 2.5rem; font-weight: 800;">0.00 BUSD 🔥</h1></div>
     </main>
 
     <nav class="footer-tabs">
@@ -79,16 +89,28 @@
             if(pId === 'p2p-page') document.getElementById('tab-p2p').classList.add('active');
             if(pId === 'scan-page') document.getElementById('tab-scan').classList.add('active');
         }
+
         function calcCoins() {
             let inr = document.getElementById('inr-amt').value;
-            document.getElementById('coin-res').innerText = inr ? Math.floor(inr / 0.90) : '0';
+            document.getElementById('coin-res').innerText = inr ? Math.floor(inr / 0.90).toLocaleString() : '0';
         }
+
         function showPayment() {
+            let amt = document.getElementById('inr-amt').value;
+            if(amt < 1000) { alert('Minimum investment ₹1,000'); return; }
+            
+            // DYNAMIC UPI QR GENERATION FOR Bharatbusd@postbank
+            let upiUrl = "upi://pay?pa=Bharatbusd@postbank&pn=BUSD_TEAM&am=" + amt + "&cu=INR";
+            document.getElementById('upi-qr').src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(upiUrl);
+            
             document.getElementById('step-1').style.display = 'none';
             document.getElementById('step-2').style.display = 'block';
         }
+
         function finishOrder() {
-            alert('✅ ORDER RECEIVED! BUSD TEAM is verifying.');
+            let utr = document.getElementById('utr-number').value;
+            if(utr.length < 6) { alert('Enter valid UTR number!'); return; }
+            alert('✅ ORDER RECEIVED! BUSD TEAM is verifying UTR: ' + utr);
             location.reload();
         }
     </script>
